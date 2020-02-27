@@ -1,2 +1,8 @@
 LED : WL-SFCC SMT Full-color Chip LED Compact 
 https://www.we-online.com/catalog/en/WL-SFCC/
+
+
+
+micro-controlleur:  CYBLE-416045-02
+https://www.cypress.com/documentation/development-kitsboards/psoc-6-ble-prototyping-kit-cy8cproto-063-ble
+
