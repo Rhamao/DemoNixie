@@ -1,2 +1,2 @@
 # DemoNixie
-Projet LRPO MECSE de l'IUT de Cachan : Réalisation d'un démonstrateur nixie avec des leds
+Cette branche sert à recevoir tous les docs qui ne sont pas du codes (planning, docs composants, ect...). Elle ne sera donc PAS MERGE SUR LA BRANCHE MASTER.
