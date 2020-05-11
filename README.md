@@ -1,2 +1,2 @@
 # DemoNixie
-Projet LRPO MECSE de l'IUT de Cachan : Réalisation d'un démonstrateur nixie avec des leds
+Cette branche sert à reccevoir tous les exmeples de codes qui peuvent nous aider à la programmation. Elle ne sera donc PAS MERGE SUR LA BRANCHE PRINCIPALE.
