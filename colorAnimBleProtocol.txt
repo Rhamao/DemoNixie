@@ -1,0 +1,9 @@
+Custom service:
+	animeMode -> bool
+	color0 -> int (RGB 24bit | sans animation / première étape animation)
+	time0 -> int (ms from color0 to color1 | animation)
+	color1 -> int (RGB 24bit | animation)
+	time1 -> int (ms from color1 to color2 | animation)
+	color2 -> int (RGB 24bit | animation)
+	time2 -> int (ms from color2 to color0 | animation)
+
