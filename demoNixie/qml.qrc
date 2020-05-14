@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>ColorSelector.qml</file>
+        <file>main2.qml</file>
+        <file>AppTimer.qml</file>
     </qresource>
 </RCC>
