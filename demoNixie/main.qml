@@ -12,7 +12,6 @@ Item {
     property int smallMargin: 5
     property int mediumMargin: 10
     property int bigMargin: 20
-    property int timeScrollerWidth: 65
     property int bigFontSize: 20
     property var colorList: ["red", "pink", "purple", "blue", "green", "yellow", "orange"]
 
@@ -60,70 +59,14 @@ Item {
             }
         }
 
-        Rectangle{
+        ScrollableClock {
             id: timeChangingArea
-            width: 250
-            height: 60
-            anchors {top: timeArea.bottom; topMargin: smallMargin}
-            color : "white"
-            ScrollView {
-                id: hour
-                width: timeScrollerWidth
-                height: timeChangingArea.height
-                font.pointSize: bigFontSize
-                clip: true
-                anchors {verticalCenter: parent.verticalCenter}
-                ListView {
-                    id: houListView
-                    model: 24
-                    delegate: ItemDelegate {
-                        text: index
-                    }
-                }
-            }
-            Text {
-                id: dots
-                font.pointSize: bigFontSize
-                text: qsTr(":")
-                anchors{verticalCenter: parent.verticalCenter; left: hour.right }
-            }
-            ScrollView {
-                id: min
-                width: timeScrollerWidth
-                height: timeChangingArea.height
-                font.pointSize: bigFontSize
-                clip: true
-                anchors {verticalCenter: parent.verticalCenter; left: dots.right; leftMargin: 23}
-                ListView {
-                    id: minListView
-                    model: 60
-                    delegate: ItemDelegate {
-                        text: index
-                    }
-                }
-            }
-            Text {
-                id: dots2
-                font.pointSize: bigFontSize
-                text: qsTr(":")
-                anchors{verticalCenter: parent.verticalCenter; left: min.right }
-            }
-            ScrollView {
-                id: second
-                width: timeScrollerWidth
-                height: timeChangingArea.height
-                font.pointSize: bigFontSize
-                clip: true
-                anchors {verticalCenter: parent.verticalCenter; left: dots2.right; leftMargin: 23}
-                ListView {
-                    id: secondListView
-                    model: 60
-                    delegate: ItemDelegate {
-                        text: index
-                    }
-                }
-            }
+            fontColor: "black"
+            backgroundColor: "white"
+            fontSize: 20
+
         }
+
         Rectangle{
             id: timeArea
             width: parent.width

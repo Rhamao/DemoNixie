@@ -4,5 +4,7 @@
         <file>ColorSelector.qml</file>
         <file>main2.qml</file>
         <file>AppTimer.qml</file>
+        <file>ScrollableClock.qml</file>
+        <file>ScrollableNumber.qml</file>
     </qresource>
 </RCC>

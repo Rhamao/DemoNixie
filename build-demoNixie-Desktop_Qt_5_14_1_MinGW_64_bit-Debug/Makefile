@@ -485,6 +485,8 @@ qrc_qml.cpp: ../demoNixie/qml.qrc \
 		../demoNixie/main2.qml \
 		../demoNixie/AppTimer.qml \
 		../demoNixie/ColorSelector.qml \
+		../demoNixie/ScrollableNumber.qml \
+		../demoNixie/ScrollableClock.qml \
 		../demoNixie/main.qml
 	C:\Qt\5.14.1\mingw73_64\bin\rcc.exe -name qml ..\demoNixie\qml.qrc -o qrc_qml.cpp
 
