@@ -14,6 +14,9 @@ Rectangle{
     property int timeScrollerWidth: fontSize*2
     anchors {top: timeArea.bottom; topMargin: smallMargin}
     color : backgroundColor
+    property int seconds: 0
+    property int hours: 0
+    property int mins: 0
     ScrollView {
         id: hour
         width: timeScrollerWidth
@@ -23,6 +26,8 @@ Rectangle{
         ListView {
             id: houListView
             model: 24
+            currentIndex: hours
+            //Component.onCompleted: positionViewAtBeginning()
             delegate: ScrollableNumber {
                 fontColor: root.fontColor
                 fontSize: root.fontSize
@@ -45,6 +50,7 @@ Rectangle{
         ListView {
             id: minListView
             model: 60
+            currentIndex: mins
             delegate: ScrollableNumber {
                 fontColor: root.fontColor
                 fontSize: root.fontSize
@@ -67,6 +73,7 @@ Rectangle{
         ListView {
             id: secondListView
             model: 60
+            currentIndex: seconds
             delegate: ScrollableNumber {
                 fontColor: root.fontColor
                 fontSize: root.fontSize

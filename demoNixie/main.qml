@@ -14,6 +14,11 @@ Item {
     property int bigMargin: 20
     property int bigFontSize: 20
     property var colorList: ["red", "pink", "purple", "blue", "green", "yellow", "orange"]
+    property string policeColor: "white"
+    property string backgroundColor: "black"
+    property int hour: 0
+    property int minute: 0
+    property int second: 0
 
     //Background
     Rectangle
@@ -36,35 +41,38 @@ Item {
             id: title
             text: "DemoNixie"
             y: 30
-            color: "#ffffff"
+            color: "white"
             font.family: "Segoe UI"
             anchors.horizontalCenter: parent.horizontalCenter
-            font.pointSize: 11; font.bold: true
+            font.pointSize: 40;
+            font.bold: true
         }
 
         Rectangle{
             id: colorSelectionArea
             width: parent.width
             height: 60
-            anchors {   top: title.bottom; topMargin: smallMargin }
-            color : "white"
+            anchors {   top: title.bottom; topMargin: mediumMargin}
+            color : backgroundColor
 
             Repeater{
                 model:colorList
+                anchors{horizontalCenter: parent.horizontalCenter}
                 delegate: ColorSelector {
                     colorModel: colorList[index]
                     x: (width + smallMargin)*index
-                    anchors.verticalCenter: parent.verticalCenter
+                    //anchors.horizontalCenter: parent.horizontalCenter
+                    //anchors.verticalCenter: parent.verticalCenter
                 }
             }
         }
 
         ScrollableClock {
             id: timeChangingArea
-            fontColor: "black"
-            backgroundColor: "white"
-            fontSize: 20
-
+            anchors{top: colorSelectionArea.bottom; horizontalCenter: parent.horizontalCenter; topMargin: mediumMargin}
+            fontColor: policeColor
+            backgroundColor: backgroundColor
+            fontSize: 60
         }
 
         Rectangle{
@@ -73,9 +81,17 @@ Item {
             height: 60
             anchors {top: colorSelectionArea.bottom; topMargin: smallMargin}
             color : "white"
+            visible: false
             Timer {
-                interval: 500; running: true; repeat: true
-                onTriggered:{ time.text = new Date().toLocaleString(Qt.locale(), "hh:mm:ss")
+                interval: 1000; running: true; repeat: true
+                onTriggered:{
+                    //time.text = new Date().toLocaleString(Qt.locale(), "hh:mm:ss")
+                    hour = new Date().toLocaleString(Qt.locale(), "hh")
+                    minute = new Date().toLocaleString(Qt.locale(), "mm")
+                    second = new Date().toLocaleString(Qt.locale(), "ss")
+                    timeChangingArea.hours = hour
+                    timeChangingArea.mins = minute
+                    timeChangingArea.seconds = second
                 }
             }
 
