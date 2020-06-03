@@ -32,6 +32,10 @@ Rectangle{
                 fontColor: root.fontColor
                 fontSize: root.fontSize
             }
+            onCurrentIndexChanged:{
+                if(hours == 00)
+                    positionViewAtBeginning();
+            }
         }
     }
     Text {
@@ -54,6 +58,10 @@ Rectangle{
             delegate: ScrollableNumber {
                 fontColor: root.fontColor
                 fontSize: root.fontSize
+            }
+            onCurrentIndexChanged:{
+                if(mins == 00)
+                    positionViewAtBeginning();
             }
         }
     }
@@ -78,6 +86,11 @@ Rectangle{
                 fontColor: root.fontColor
                 fontSize: root.fontSize
             }
+            onCurrentIndexChanged:{
+                if(seconds == 00)
+                    positionViewAtBeginning();
+            }
+
         }
     }
 }

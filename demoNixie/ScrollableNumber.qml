@@ -3,7 +3,6 @@ import QtQuick.Controls 2.14
 
 ItemDelegate {
     id: root
-    width: parent.width
     height: fontSize*2
     property color fontColor: "white"
     property int fontSize: 20
