@@ -6,5 +6,7 @@
         <file>AppTimer.qml</file>
         <file>ScrollableClock.qml</file>
         <file>ScrollableNumber.qml</file>
+        <file>DebugView.qml</file>
+        <file>indicatorButton.png</file>
     </qresource>
 </RCC>

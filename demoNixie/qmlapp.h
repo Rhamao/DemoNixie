@@ -8,11 +8,11 @@
 #include <QtQml/QQmlApplicationEngine>
 #include <QtQml/QQmlContext>
 
-
-
+#include "dbglink.h"
 
 
 #define V_MAIN      1 //  id des views
+#define V_DBG       2 //  id des views
 
 
 
@@ -29,14 +29,18 @@ public:
 signals:
 
 public slots:
-//    void    handleChecker(int val);
+    void    handleQmlDbgInit(DbgLink *dbg);
+    void    testButton();
 private slots:
     void    viewChanger(int id);
     void    loadMain();
+    void    loadDbg();
 
 
 private:
     int m_pageId;
+    DbgLink *m_dbgLink = nullptr;
+
 };
 
 #endif // QMLAPP_H
