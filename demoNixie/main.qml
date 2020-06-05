@@ -21,7 +21,7 @@ Item {
     property int second: 0
     property var iconList: ["images/reset.png", "", ""]
     property string utc: "  UTC\n+2:00"
-    property var buttonTextList: ["", "", utc]
+    property var buttonTextList: ["", " Set\nTime", utc]
 
     //Background
     Rectangle
@@ -55,7 +55,7 @@ Item {
             id: colorSelectionArea
             width: parent.width
             height: 60
-            anchors {   top: title.bottom; topMargin: mediumMargin}
+            anchors {   top: title.bottom; topMargin: bigMargin}
             color : backgroundColor
 
             Repeater{
@@ -72,7 +72,7 @@ Item {
 
         ScrollableClock {
             id: timeChangingArea
-            anchors{top: colorSelectionArea.bottom; horizontalCenter: parent.horizontalCenter; topMargin: mediumMargin}
+            anchors{top: colorSelectionArea.bottom; horizontalCenter: parent.horizontalCenter}
             fontColor: policeColor
             backgroundColor: element.backgroundColor
             fontSize: 60
@@ -82,7 +82,7 @@ Item {
             id: timeArea
             width: parent.width
             height: 60
-            anchors {top: colorSelectionArea.bottom; topMargin: smallMargin}
+            anchors {top: colorSelectionArea.bottom}
             color : "white"
             visible: false
             Timer {
@@ -109,7 +109,7 @@ Item {
 
         Row {
             id: row
-            anchors{top: timeArea.bottom; horizontalCenter: parent.horizontalCenter; topMargin: 100}
+            anchors{top: timeArea.bottom; horizontalCenter: parent.horizontalCenter; topMargin: 70}
             spacing: 40
 
             Repeater{
@@ -120,7 +120,7 @@ Item {
                     size: 50
                     _text: buttonTextList[index]
                     iconSource: iconList[index]
-                    fontSize: 10
+                    fontSize: 16
                 }
             }
         }

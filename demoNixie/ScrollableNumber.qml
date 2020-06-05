@@ -8,6 +8,7 @@ ItemDelegate {
     property int fontSize: 20
     Text{
         id: text
+        anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
         text: index
         color: fontColor

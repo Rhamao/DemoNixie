@@ -33,6 +33,8 @@ Button {
             text: _text
             font.pointSize: fontSize
             color: "#838383"
+            font.bold: true
+            font.family: "Segoe UI"
         }
     }
 
