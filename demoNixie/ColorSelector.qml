@@ -5,11 +5,11 @@ import QtQuick.Window 2.14
 //Home page
 Rectangle{
     id: root
-    property color colorModel: "red"
+    property color _color: "red"
     property int size: 45
     width : size
     height: width
-    color : (ma.containsMouse) ? Qt.lighter(colorModel) : colorModel
+    color : (ma.containsMouse) ? Qt.lighter(_color) : _color
     radius: width
     MouseArea {
         id:ma
@@ -18,6 +18,5 @@ Rectangle{
         onHoveredChanged: {
             console.log("hovered :", ma.containsMouse)
         }
-        //onClicked: rectangle.color = colorModel
     }
 }

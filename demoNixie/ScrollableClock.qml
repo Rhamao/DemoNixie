@@ -13,7 +13,7 @@ Rectangle{
     property int fontSize: 20
     property int timeScrollerWidth: fontSize*2
     anchors {top: timeArea.bottom; topMargin: smallMargin}
-    color : backgroundColor
+    color: backgroundColor
     property int seconds: 0
     property int hours: 0
     property int mins: 0

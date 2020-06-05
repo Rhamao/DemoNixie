@@ -6,5 +6,7 @@
         <file>AppTimer.qml</file>
         <file>ScrollableClock.qml</file>
         <file>ScrollableNumber.qml</file>
+        <file>DemoNixieButton.qml</file>
+        <file>images/reset.png</file>
     </qresource>
 </RCC>

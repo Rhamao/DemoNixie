@@ -19,6 +19,9 @@ Item {
     property int hour: 0
     property int minute: 0
     property int second: 0
+    property var iconList: ["images/reset.png", "", ""]
+    property string utc: "  UTC\n+2:00"
+    property var buttonTextList: ["", "", utc]
 
     //Background
     Rectangle
@@ -59,7 +62,7 @@ Item {
                 model:colorList
                 anchors{horizontalCenter: parent.horizontalCenter}
                 delegate: ColorSelector {
-                    colorModel: colorList[index]
+                    _color: colorList[index]
                     x: (width + smallMargin)*index
                     //anchors.horizontalCenter: parent.horizontalCenter
                     //anchors.verticalCenter: parent.verticalCenter
@@ -71,7 +74,7 @@ Item {
             id: timeChangingArea
             anchors{top: colorSelectionArea.bottom; horizontalCenter: parent.horizontalCenter; topMargin: mediumMargin}
             fontColor: policeColor
-            backgroundColor: backgroundColor
+            backgroundColor: element.backgroundColor
             fontSize: 60
         }
 
@@ -97,6 +100,28 @@ Item {
 
             AppTimer {
                 id: time
+            }
+        }
+
+        ButtonGroup {
+            buttons: row.children
+        }
+
+        Row {
+            id: row
+            anchors{top: timeArea.bottom; horizontalCenter: parent.horizontalCenter; topMargin: 100}
+            spacing: 40
+
+            Repeater{
+                model:iconList
+                anchors{horizontalCenter: parent.horizontalCenter}
+                delegate: DemoNixieButton {
+                    _color: "#333333"
+                    size: 50
+                    _text: buttonTextList[index]
+                    iconSource: iconList[index]
+                    fontSize: 10
+                }
             }
         }
 
