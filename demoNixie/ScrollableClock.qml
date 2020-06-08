@@ -17,6 +17,7 @@ Rectangle{
     property int seconds: 0
     property int hours: 0
     property int mins: 0
+    property int delay: 0
     ScrollView {
         id: hour
         width: timeScrollerWidth
@@ -24,17 +25,17 @@ Rectangle{
         clip: true
         anchors {verticalCenter: parent.verticalCenter; right: dots.left}
         ListView {
-            id: houListView
+            id: hourListView
             model: 24
+            Component.onCompleted: positionViewAtIndex(new Date().toLocaleString(Qt.locale(), "hh"), ListView.Center)
             currentIndex: hours
-            //Component.onCompleted: positionViewAtBeginning()
-            delegate: ScrollableNumber {
-                fontColor: root.fontColor
-                fontSize: root.fontSize
-            }
             onCurrentIndexChanged:{
                 if(hours == 00)
                     positionViewAtBeginning();
+            }
+            delegate: ScrollableNumber {
+                fontColor: root.fontColor
+                fontSize: root.fontSize
             }
         }
     }
@@ -48,20 +49,21 @@ Rectangle{
     ScrollView {
         id: min
         width: timeScrollerWidth
-        height: timeChangingArea.height
+        height: parent.height
         clip: true
         anchors {verticalCenter: parent.verticalCenter; horizontalCenter: parent.horizontalCenter}
         ListView {
             id: minListView
             model: 60
+            Component.onCompleted: positionViewAtIndex(new Date().toLocaleString(Qt.locale(), "mm"), ListView.Center)
             currentIndex: mins
-            delegate: ScrollableNumber {
-                fontColor: root.fontColor
-                fontSize: root.fontSize
-            }
             onCurrentIndexChanged:{
                 if(mins == 00)
                     positionViewAtBeginning();
+            }
+            delegate: ScrollableNumber {
+                fontColor: root.fontColor
+                fontSize: root.fontSize
             }
         }
     }
@@ -75,22 +77,39 @@ Rectangle{
     ScrollView {
         id: second
         width: timeScrollerWidth
-        height: timeChangingArea.height
+        height: parent.height
         clip: true
         anchors {verticalCenter: parent.verticalCenter; left: dots2.right}
         ListView {
             id: secondListView
             model: 60
+            Component.onCompleted: positionViewAtIndex(new Date().toLocaleString(Qt.locale(), "ss"), ListView.Center)
             currentIndex: seconds
-            delegate: ScrollableNumber {
-                fontColor: root.fontColor
-                fontSize: root.fontSize
-            }
             onCurrentIndexChanged:{
                 if(seconds == 00)
                     positionViewAtBeginning();
             }
-
+            delegate: ScrollableNumber {
+                fontColor: root.fontColor
+                fontSize: root.fontSize
+            }
         }
     }
+
+    Rectangle{
+        id: timer
+        width: parent.width
+        height: 60
+        visible: false
+        Timer {
+            interval: 1000; running: true; repeat: true
+            onTriggered:{
+                    hours = new Date().toLocaleString(Qt.locale(), "hh")
+                    mins = new Date().toLocaleString(Qt.locale(), "mm")
+                    seconds = new Date().toLocaleString(Qt.locale(), "ss")
+            }
+        }
+    }
+
+
 }

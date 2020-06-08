@@ -31,15 +31,12 @@ Item {
         anchors.fill: parent
     }
 
-    //Area of design with a smallMargin to avoid icons
-    //touching the border
     Rectangle{
         id: designArea
         color: "black"
         anchors.fill: parent
         anchors{left: parent.left; leftMargin: smallMargin;
                 right: parent.right; rightMargin: smallMargin}
-        //Title
         Text {
             id: title
             text: "DemoNixie"
@@ -57,50 +54,22 @@ Item {
             height: 60
             anchors {   top: title.bottom; topMargin: bigMargin}
             color : backgroundColor
-
             Repeater{
                 model:colorList
                 anchors{horizontalCenter: parent.horizontalCenter}
                 delegate: ColorSelector {
                     _color: colorList[index]
-                    x: (width + smallMargin)*index
-                    //anchors.horizontalCenter: parent.horizontalCenter
-                    //anchors.verticalCenter: parent.verticalCenter
+                    x: (size + smallMargin)*index
                 }
             }
         }
 
         ScrollableClock {
-            id: timeChangingArea
+            id: timeArea
             anchors{top: colorSelectionArea.bottom; horizontalCenter: parent.horizontalCenter}
             fontColor: policeColor
             backgroundColor: element.backgroundColor
             fontSize: 60
-        }
-
-        Rectangle{
-            id: timeArea
-            width: parent.width
-            height: 60
-            anchors {top: colorSelectionArea.bottom}
-            color : "white"
-            visible: false
-            Timer {
-                interval: 1000; running: true; repeat: true
-                onTriggered:{
-                    //time.text = new Date().toLocaleString(Qt.locale(), "hh:mm:ss")
-                    hour = new Date().toLocaleString(Qt.locale(), "hh")
-                    minute = new Date().toLocaleString(Qt.locale(), "mm")
-                    second = new Date().toLocaleString(Qt.locale(), "ss")
-                    timeChangingArea.hours = hour
-                    timeChangingArea.mins = minute
-                    timeChangingArea.seconds = second
-                }
-            }
-
-            AppTimer {
-                id: time
-            }
         }
 
         ButtonGroup {
@@ -124,11 +93,6 @@ Item {
                 }
             }
         }
-
     }
-
-
-
-
 
 }

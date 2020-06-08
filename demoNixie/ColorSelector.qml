@@ -8,7 +8,7 @@ Rectangle{
     property color _color: "red"
     property int size: 45
     width : size
-    height: width
+    height: size
     color : (ma.containsMouse) ? Qt.lighter(_color) : _color
     radius: width
     MouseArea {
