@@ -27,12 +27,6 @@ Rectangle{
         ListView {
             id: hourListView
             model: 24
-            Component.onCompleted: positionViewAtIndex(new Date().toLocaleString(Qt.locale(), "hh"), ListView.Center)
-            currentIndex: hours
-            onCurrentIndexChanged:{
-                if(hours == 00)
-                    positionViewAtBeginning();
-            }
             delegate: ScrollableNumber {
                 fontColor: root.fontColor
                 fontSize: root.fontSize
@@ -55,12 +49,6 @@ Rectangle{
         ListView {
             id: minListView
             model: 60
-            Component.onCompleted: positionViewAtIndex(new Date().toLocaleString(Qt.locale(), "mm"), ListView.Center)
-            currentIndex: mins
-            onCurrentIndexChanged:{
-                if(mins == 00)
-                    positionViewAtBeginning();
-            }
             delegate: ScrollableNumber {
                 fontColor: root.fontColor
                 fontSize: root.fontSize
@@ -83,12 +71,6 @@ Rectangle{
         ListView {
             id: secondListView
             model: 60
-            Component.onCompleted: positionViewAtIndex(new Date().toLocaleString(Qt.locale(), "ss"), ListView.Center)
-            currentIndex: seconds
-            onCurrentIndexChanged:{
-                if(seconds == 00)
-                    positionViewAtBeginning();
-            }
             delegate: ScrollableNumber {
                 fontColor: root.fontColor
                 fontSize: root.fontSize
@@ -104,9 +86,9 @@ Rectangle{
         Timer {
             interval: 1000; running: true; repeat: true
             onTriggered:{
-                    hours = new Date().toLocaleString(Qt.locale(), "hh")
-                    mins = new Date().toLocaleString(Qt.locale(), "mm")
-                    seconds = new Date().toLocaleString(Qt.locale(), "ss")
+                hourListView.positionViewAtIndex(new Date().toLocaleString(Qt.locale(), "hh"), ListView.Center)
+                minListView.positionViewAtIndex(new Date().toLocaleString(Qt.locale(), "mm"), ListView.Center)
+                secondListView.positionViewAtIndex(new Date().toLocaleString(Qt.locale(), "ss"), ListView.Center)
             }
         }
     }
