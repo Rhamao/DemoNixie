@@ -1,0 +1,5 @@
+Les pins de programmation
+2 UART pour le debug
+SDI SCKI LDI
+SDO SCKO LDO
+SYNC PWMCK
