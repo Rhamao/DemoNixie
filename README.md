@@ -8,3 +8,5 @@ Branches à connaitre :
   </br>. design_android : design de l'app Android en QML
   </br>
   </br>. d'autres branches à venir je m'occupe de mettre le doc à jour... (Arnaud)
+  </br>. conception_electronique : Branche contenant les documents relatifs à la conception électronique du projet.
+  </br>. QtBle : Branche de la conception des trames BLE.
