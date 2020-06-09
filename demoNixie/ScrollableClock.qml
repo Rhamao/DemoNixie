@@ -12,21 +12,32 @@ Rectangle{
     property color fontColor: "white"
     property int fontSize: 20
     property int timeScrollerWidth: fontSize*2
-    anchors {top: timeArea.bottom; topMargin: smallMargin}
+    anchors {top: clock.bottom; topMargin: smallMargin}
     color: backgroundColor
     property int seconds: 0
     property int hours: 0
     property int mins: 0
+    property int secondsOffset: 0
+    property int hoursOffset: 0
+    property int minsOffset: 0
     property int delay: 0
+    property bool scrollLock: false
+    property bool pause: false
+    property bool enableTimer: true
+
     ScrollView {
         id: hour
         width: timeScrollerWidth
         height: parent.height
         clip: true
         anchors {verticalCenter: parent.verticalCenter; right: dots.left}
+        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+        ScrollBar.vertical.policy: ScrollBar.AlwaysOff
+        enabled: scrollLock
         ListView {
             id: hourListView
             model: 24
+            currentIndex: hours + hoursOffset
             delegate: ScrollableNumber {
                 fontColor: root.fontColor
                 fontSize: root.fontSize
@@ -46,9 +57,13 @@ Rectangle{
         height: parent.height
         clip: true
         anchors {verticalCenter: parent.verticalCenter; horizontalCenter: parent.horizontalCenter}
+        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+        ScrollBar.vertical.policy: ScrollBar.AlwaysOff
+        enabled: scrollLock
         ListView {
             id: minListView
             model: 60
+            currentIndex: mins + minsOffset
             delegate: ScrollableNumber {
                 fontColor: root.fontColor
                 fontSize: root.fontSize
@@ -68,9 +83,13 @@ Rectangle{
         height: parent.height
         clip: true
         anchors {verticalCenter: parent.verticalCenter; left: dots2.right}
+        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+        ScrollBar.vertical.policy: ScrollBar.AlwaysOff
+        enabled: scrollLock
         ListView {
             id: secondListView
             model: 60
+            currentIndex: seconds + secondsOffset
             delegate: ScrollableNumber {
                 fontColor: root.fontColor
                 fontSize: root.fontSize
@@ -83,12 +102,21 @@ Rectangle{
         width: parent.width
         height: 60
         visible: false
+        enabled: enableTimer
         Timer {
-            interval: 1000; running: true; repeat: true
+            interval: 1000; running: enableTimer; repeat: true
             onTriggered:{
-                hourListView.positionViewAtIndex(new Date().toLocaleString(Qt.locale(), "hh"), ListView.Center)
-                minListView.positionViewAtIndex(new Date().toLocaleString(Qt.locale(), "mm"), ListView.Center)
-                secondListView.positionViewAtIndex(new Date().toLocaleString(Qt.locale(), "ss"), ListView.Center)
+                if(!pause){
+                    hours=new Date().toLocaleString(Qt.locale(), "hh")
+                    mins=new Date().toLocaleString(Qt.locale(), "mm")
+                    seconds=new Date().toLocaleString(Qt.locale(), "ss")
+                    hours = hours + hoursOffset
+                    mins = mins + minsOffset
+                    seconds = seconds + secondsOffset
+                    hourListView.positionViewAtIndex(hours, ListView.Center)
+                    minListView.positionViewAtIndex(mins, ListView.Center)
+                    secondListView.positionViewAtIndex(seconds, ListView.Center)
+                }
             }
         }
     }

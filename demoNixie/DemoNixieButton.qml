@@ -11,11 +11,11 @@ Button {
     property string iconSource: ""
     property string _text: ""
     property int fontSize : 5
+    property color fontColor: "#838383"
     width : size
     height: size
     icon.source: iconSource
     icon.color: "white"
-    //text: qsTr(_text)
     font.pointSize: fontSize
 
     background: Rectangle {
@@ -32,7 +32,7 @@ Button {
             anchors{horizontalCenter: parent.horizontalCenter; verticalCenter: parent.verticalCenter}
             text: _text
             font.pointSize: fontSize
-            color: "#838383"
+            color: fontColor
             font.bold: true
             font.family: "Segoe UI"
         }
