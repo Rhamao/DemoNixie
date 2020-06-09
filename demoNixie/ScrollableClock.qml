@@ -17,12 +17,8 @@ Rectangle{
     property int seconds: 0
     property int hours: 0
     property int mins: 0
-    property int secondsOffset: 0
-    property int hoursOffset: 0
-    property int minsOffset: 0
     property int delay: 0
     property bool scrollLock: false
-    property bool pause: false
     property bool enableTimer: true
 
     ScrollView {
@@ -37,7 +33,7 @@ Rectangle{
         ListView {
             id: hourListView
             model: 24
-            currentIndex: hours + hoursOffset
+            currentIndex: hours
             delegate: ScrollableNumber {
                 fontColor: root.fontColor
                 fontSize: root.fontSize
@@ -63,7 +59,7 @@ Rectangle{
         ListView {
             id: minListView
             model: 60
-            currentIndex: mins + minsOffset
+            currentIndex: mins
             delegate: ScrollableNumber {
                 fontColor: root.fontColor
                 fontSize: root.fontSize
@@ -89,7 +85,7 @@ Rectangle{
         ListView {
             id: secondListView
             model: 60
-            currentIndex: seconds + secondsOffset
+            currentIndex: seconds
             delegate: ScrollableNumber {
                 fontColor: root.fontColor
                 fontSize: root.fontSize
@@ -105,17 +101,32 @@ Rectangle{
         enabled: enableTimer
         Timer {
             interval: 1000; running: enableTimer; repeat: true
-            onTriggered:{
-                if(!pause){
+            Component.onCompleted:{
+                if(enableTimer){
                     hours=new Date().toLocaleString(Qt.locale(), "hh")
                     mins=new Date().toLocaleString(Qt.locale(), "mm")
                     seconds=new Date().toLocaleString(Qt.locale(), "ss")
-                    hours = hours + hoursOffset
-                    mins = mins + minsOffset
-                    seconds = seconds + secondsOffset
                     hourListView.positionViewAtIndex(hours, ListView.Center)
                     minListView.positionViewAtIndex(mins, ListView.Center)
                     secondListView.positionViewAtIndex(seconds, ListView.Center)
+                }
+            }
+
+            onTriggered:{
+                if(enableTimer){
+                        seconds = seconds + 1
+                        if(seconds>59){
+                            secondListView.positionViewAtBeginning()
+                            seconds = 0
+                            mins = mins + 1;
+                        }
+                        if(mins>59){
+                            mins = 0
+                            hours = hours + 1
+                        }
+                        if(hours>23){
+                            hours=0
+                        }
                 }
             }
         }
