@@ -22,6 +22,7 @@ Item {
     property var iconList: ["images/reset.png", "", ""]
     property string utc: "  UTC\n+2:00"
     property var buttonTextList: ["", " Set\nTime", utc]
+    property bool btEnable: false
 
     Loader
     {
@@ -42,14 +43,15 @@ Item {
         color: "black"
         anchors.fill: parent
         anchors{left: parent.left; leftMargin: smallMargin;
-                right: parent.right; rightMargin: smallMargin}
+                right: parent.right; rightMargin: smallMargin
+                bottomMargin: smallMargin; topMargin: smallMargin}
         Text {
             id: title
             text: "DemoNixie"
             y: 30
             color: "white"
             font.family: "Segoe UI"
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors{horizontalCenter:  parent.horizontalCenter; top: parent.top}
             font.pointSize: 40;
             font.bold: true
         }
@@ -116,6 +118,7 @@ Item {
                     fakeClock.visible = true
                     fakeClock.setTime(clock.hours, clock.mins, clock.seconds)
                     timeButtons.visible = false
+                    btSendButton.visible = false
                     timeSetPlusButtons.visible = true
                     timeSetMinusButtons.visible = true
                     timeButtons.anchors.topMargin = timeButtons.anchors.topMargin + 110
@@ -151,9 +154,10 @@ Item {
                 onClicked:{
                     clock.setTime(fakeClock.hours, fakeClock.mins, fakeClock.seconds)
                     timeButtons.visible = true
+                    btSendButton.visible = true
                     timeSetPlusButtons.visible = false
                     timeSetMinusButtons.visible = false
-                    timeButtons.anchors.topMargin = timeButtons.anchors.topMargin - 120
+                    timeButtons.anchors.topMargin = timeButtons.anchors.topMargin - 110
                     clock.visible = true
                     fakeClock.visible = false
                     console.log("Clock visible ;", clock.visible)
@@ -206,9 +210,10 @@ Item {
                 fontColor: "white"
                 onClicked:{
                     timeButtons.visible = true
+                    btSendButton.visible = true
                     timeSetPlusButtons.visible = false
                     timeSetMinusButtons.visible = false
-                    timeButtons.anchors.topMargin = timeButtons.anchors.topMargin - 120
+                    timeButtons.anchors.topMargin = timeButtons.anchors.topMargin - 110
                     clock.visible = true
                     fakeClock.visible = false
                     console.log("Clock visible ;", clock.visible)
@@ -257,6 +262,33 @@ Item {
                     console.log("seconds", fakeClock.seconds)
                 }
             }
+        }
+
+        DemoNixieButton{
+            id:btConnectButton
+            anchors{left: parent.left; top: parent.top}
+            size:50
+            _color: "#333333"
+            iconSource: "images/bluetoothIcon.png"
+            onClicked: {
+               if(!btEnable){
+                   btEnable = true
+                   _color = "#0000a1"
+               }
+               else{
+                   btEnable = false
+                   _color = "#333333"
+                }
+                console.log("Color", _color)
+            }
+        }
+
+        DemoNixieButton{
+            id:btSendButton
+            anchors{top: timeButtons.bottom; horizontalCenter: parent.horizontalCenter; topMargin: bigMargin}
+            size:60
+            _color: "#333333"
+            iconSource: "images/senbByBluetooth.png"
         }
     }
 }

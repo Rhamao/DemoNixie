@@ -26,7 +26,7 @@ Button {
         opacity: enabled ? 1 : 0.3
         border.color: root.down ? "#333333" : Qt.lighter("#333333")
         border.width: 3
-        color: root.down ? _color : Qt.lighter(_color)
+        color: !root.down ? _color : Qt.lighter(_color)
         Text {
             id: mytext
             anchors{horizontalCenter: parent.horizontalCenter; verticalCenter: parent.verticalCenter}
