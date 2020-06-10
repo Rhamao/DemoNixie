@@ -1,8 +1,11 @@
-control : 110.490mm x 68.834
+control : 100.584mm x 66.802mm
 vis par rapport au bord : 5.08mm en x, 3.048mm en y
 
 
-led : 27.463mm x 66.040mm
-vis par rapport au bord
+led : 275.59mm x 66.040mm
+vis par rapport au bord : 5.08mm en x et y
+espace entre les deux groupes de digits : 24.803mm
 
 
+
+Arnaud Apelbaum - Antoine Bureau - Julien Coquelet-Gaume - Stéphane Marques - LPRO MECSE 2020
