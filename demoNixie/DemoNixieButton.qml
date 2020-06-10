@@ -37,14 +37,4 @@ Button {
             font.family: "Segoe UI"
         }
     }
-
-    /*contentItem: Text {
-        text: root.text
-        font: root.font
-        opacity: enabled ? 1.0 : 0.3
-        color: root.down ? "white" : "white"
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        elide: Text.ElideRight
-    }*/
 }

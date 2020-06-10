@@ -99,6 +99,9 @@ Item {
                 size: 50
                 iconSource: "images/reset.png"
                 fontSize: 16
+                onClicked: {
+                    clock.resetTime()
+                }
             }
 
             DemoNixieButton{
@@ -107,14 +110,15 @@ Item {
                 size: 50
                 _text:"  Set\nTime"
                 fontSize: 16
+                fontColor: "white"
                 onClicked:{
                     clock.visible = false
                     fakeClock.visible = true
                     fakeClock.setTime(clock.hours, clock.mins, clock.seconds)
-                    setTimeButton.visible = false
+                    timeButtons.visible = false
                     timeSetPlusButtons.visible = true
                     timeSetMinusButtons.visible = true
-                    timeButtons.anchors.topMargin = timeButtons.anchors.topMargin + 100
+                    timeButtons.anchors.topMargin = timeButtons.anchors.topMargin + 110
                     console.log("Clock visible ;", clock.visible)
                     console.log("FakeClock  visible;", fakeClock.visible)
                 }
@@ -126,6 +130,7 @@ Item {
                 size: 50
                 _text: utc
                 fontSize: 16
+                fontColor: "white"
             }
         }
 
@@ -133,7 +138,7 @@ Item {
         Row {
             id: timeSetPlusButtons
             anchors{top: clock.bottom; horizontalCenter: parent.horizontalCenter; topMargin: bigMargin}
-            spacing: 100
+            spacing: 30
             visible: false
 
             DemoNixieButton{
@@ -142,12 +147,13 @@ Item {
                 size: 50
                 _text:"  Set\nTime"
                 fontSize: 16
+                fontColor: "white"
                 onClicked:{
                     clock.setTime(fakeClock.hours, fakeClock.mins, fakeClock.seconds)
-                    setTimeButton.visible = true
+                    timeButtons.visible = true
                     timeSetPlusButtons.visible = false
                     timeSetMinusButtons.visible = false
-                    timeButtons.anchors.topMargin = timeButtons.anchors.topMargin - 100
+                    timeButtons.anchors.topMargin = timeButtons.anchors.topMargin - 120
                     clock.visible = true
                     fakeClock.visible = false
                     console.log("Clock visible ;", clock.visible)
@@ -156,10 +162,10 @@ Item {
             }
 
             DemoNixieButton{
-                size:40
+                size:45
                 _color: "#333333"
                 text:"+"
-                fontSize: 16
+                fontSize: 30
                 onClicked:{
                     if(fakeClock.hours<23)
                         fakeClock.hours = fakeClock.hours + 1
@@ -168,10 +174,10 @@ Item {
             }
 
             DemoNixieButton{
-                size:40
+                size:45
                 _color: "#333333"
                 text:"+"
-                fontSize: 16
+                fontSize: 30
                 onClicked:{
                     if(fakeClock.mins<59)
                         fakeClock.mins = fakeClock.mins + 1
@@ -180,10 +186,10 @@ Item {
             }
 
             DemoNixieButton{
-                size:40
+                size:45
                 _color: "#333333"
                 text:"+"
-                fontSize: 16
+                fontSize: 30
                 onClicked:{
                     if(fakeClock.seconds<59)
                         fakeClock.seconds = fakeClock.seconds + 1
@@ -197,11 +203,12 @@ Item {
                 size: 50
                 _text:"X"
                 fontSize: 16
+                fontColor: "white"
                 onClicked:{
-                    setTimeButton.visible = true
+                    timeButtons.visible = true
                     timeSetPlusButtons.visible = false
                     timeSetMinusButtons.visible = false
-                    timeButtons.anchors.topMargin = timeButtons.anchors.topMargin - 100
+                    timeButtons.anchors.topMargin = timeButtons.anchors.topMargin - 120
                     clock.visible = true
                     fakeClock.visible = false
                     console.log("Clock visible ;", clock.visible)
@@ -213,13 +220,13 @@ Item {
         Row {
             id: timeSetMinusButtons
             anchors{top: timeSetPlusButtons.bottom; horizontalCenter: parent.horizontalCenter; topMargin: smallMargin}
-            spacing: 100
+            spacing: 30
             visible: false
             DemoNixieButton{
-                size:40
+                size:45
                 _color: "#333333"
                 text:"-"
-                fontSize: 16
+                fontSize: 30
                 onClicked:{
                     if(fakeClock.hours>0)
                         fakeClock.hours = fakeClock.hours - 1
@@ -228,10 +235,10 @@ Item {
             }
 
             DemoNixieButton{
-                size:40
+                size:45
                 _color: "#333333"
                 text:"-"
-                fontSize: 16
+                fontSize: 30
                 onClicked:{
                     if(fakeClock.mins>0)
                         fakeClock.mins = fakeClock.mins - 1
@@ -240,10 +247,10 @@ Item {
             }
 
             DemoNixieButton{
-                size:40
+                size:45
                 _color: "#333333"
                 text:"-"
-                fontSize: 16
+                fontSize: 30
                 onClicked:{
                     if(fakeClock.seconds>0)
                         fakeClock.seconds = fakeClock.seconds - 1

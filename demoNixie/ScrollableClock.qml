@@ -98,12 +98,16 @@ Rectangle{
         visible: false
         enabled: enableTimer
         Timer {
+
             interval: 1000; running: enableTimer; repeat: true
             Component.onCompleted:{
                 if(enableTimer){
+                    //const test = new Date().setUTCHours(5)
+                    //test
                     setTime(new Date().toLocaleString(Qt.locale(), "hh"),
                             new Date().toLocaleString(Qt.locale(), "mm"),
                             new Date().toLocaleString(Qt.locale(), "ss"))
+
                 }
             }
 
@@ -134,6 +138,12 @@ Rectangle{
         hourListView.positionViewAtIndex(hours, ListView.Center)
         minListView.positionViewAtIndex(mins, ListView.Center)
         secondListView.positionViewAtIndex(seconds, ListView.Center)
+    }
+
+    function resetTime(){
+        setTime(new Date().toLocaleString(Qt.locale(), "hh"),
+                new Date().toLocaleString(Qt.locale(), "mm"),
+                new Date().toLocaleString(Qt.locale(), "ss"))
     }
 
 
