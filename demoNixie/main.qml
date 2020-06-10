@@ -23,6 +23,12 @@ Item {
     property string utc: "  UTC\n+2:00"
     property var buttonTextList: ["", " Set\nTime", utc]
 
+    Loader
+    {
+      id: myLoader
+      source: "ScrollableClock.qml"
+    }
+
     //Background
     Rectangle
     {
@@ -102,19 +108,15 @@ Item {
                 _text:"  Set\nTime"
                 fontSize: 16
                 onClicked:{
-                    clock.scrollLock = !clock.scrollLock
-                    clock.visible = !clock.visible
-                    fakeClock.visible = !fakeClock.visible
-                    fakeClock.hours = 0
-                    fakeClock.mins = 0
-                    fakeClock.seconds = 0
-                    timeSetPlusButtons.visible = !timeSetPlusButtons.visible
-                    timeSetMinusButtons.visible = !timeSetMinusButtons.visible
-                    if(!clock.visible) timeButtons.anchors.topMargin = timeButtons.anchors.topMargin + 100
-                    if(clock.visible) timeButtons.anchors.topMargin = timeButtons.anchors.topMargin - 100
+                    clock.visible = false
+                    fakeClock.visible = true
+                    fakeClock.setTime(clock.hours, clock.mins, clock.seconds)
+                    setTimeButton.visible = false
+                    timeSetPlusButtons.visible = true
+                    timeSetMinusButtons.visible = true
+                    timeButtons.anchors.topMargin = timeButtons.anchors.topMargin + 100
                     console.log("Clock visible ;", clock.visible)
                     console.log("FakeClock  visible;", fakeClock.visible)
-                    console.log("Clock pause ;", clock.pause)
                 }
             }
 
@@ -133,6 +135,26 @@ Item {
             anchors{top: clock.bottom; horizontalCenter: parent.horizontalCenter; topMargin: bigMargin}
             spacing: 100
             visible: false
+
+            DemoNixieButton{
+                id: setTimeButton2
+                _color: "#333333"
+                size: 50
+                _text:"  Set\nTime"
+                fontSize: 16
+                onClicked:{
+                    clock.setTime(fakeClock.hours, fakeClock.mins, fakeClock.seconds)
+                    setTimeButton.visible = true
+                    timeSetPlusButtons.visible = false
+                    timeSetMinusButtons.visible = false
+                    timeButtons.anchors.topMargin = timeButtons.anchors.topMargin - 100
+                    clock.visible = true
+                    fakeClock.visible = false
+                    console.log("Clock visible ;", clock.visible)
+                    console.log("FakeClock  visible;", fakeClock.visible)
+                }
+            }
+
             DemoNixieButton{
                 size:40
                 _color: "#333333"
@@ -166,6 +188,24 @@ Item {
                     if(fakeClock.seconds<59)
                         fakeClock.seconds = fakeClock.seconds + 1
                     console.log("seconds", fakeClock.seconds)
+                }
+            }
+
+            DemoNixieButton{
+                id: setTimeCancelButton
+                _color: "#333333"
+                size: 50
+                _text:"X"
+                fontSize: 16
+                onClicked:{
+                    setTimeButton.visible = true
+                    timeSetPlusButtons.visible = false
+                    timeSetMinusButtons.visible = false
+                    timeButtons.anchors.topMargin = timeButtons.anchors.topMargin - 100
+                    clock.visible = true
+                    fakeClock.visible = false
+                    console.log("Clock visible ;", clock.visible)
+                    console.log("FakeClock  visible;", fakeClock.visible)
                 }
             }
         }

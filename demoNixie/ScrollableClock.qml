@@ -12,13 +12,11 @@ Rectangle{
     property color fontColor: "white"
     property int fontSize: 20
     property int timeScrollerWidth: fontSize*2
-    anchors {top: clock.bottom; topMargin: smallMargin}
     color: backgroundColor
     property int seconds: 0
     property int hours: 0
     property int mins: 0
     property int delay: 0
-    property bool scrollLock: false
     property bool enableTimer: true
 
     ScrollView {
@@ -29,7 +27,7 @@ Rectangle{
         anchors {verticalCenter: parent.verticalCenter; right: dots.left}
         ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
         ScrollBar.vertical.policy: ScrollBar.AlwaysOff
-        enabled: scrollLock
+        enabled: false
         ListView {
             id: hourListView
             model: 24
@@ -55,7 +53,7 @@ Rectangle{
         anchors {verticalCenter: parent.verticalCenter; horizontalCenter: parent.horizontalCenter}
         ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
         ScrollBar.vertical.policy: ScrollBar.AlwaysOff
-        enabled: scrollLock
+        enabled: false
         ListView {
             id: minListView
             model: 60
@@ -81,7 +79,7 @@ Rectangle{
         anchors {verticalCenter: parent.verticalCenter; left: dots2.right}
         ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
         ScrollBar.vertical.policy: ScrollBar.AlwaysOff
-        enabled: scrollLock
+        enabled: false
         ListView {
             id: secondListView
             model: 60
@@ -103,33 +101,39 @@ Rectangle{
             interval: 1000; running: enableTimer; repeat: true
             Component.onCompleted:{
                 if(enableTimer){
-                    hours=new Date().toLocaleString(Qt.locale(), "hh")
-                    mins=new Date().toLocaleString(Qt.locale(), "mm")
-                    seconds=new Date().toLocaleString(Qt.locale(), "ss")
-                    hourListView.positionViewAtIndex(hours, ListView.Center)
-                    minListView.positionViewAtIndex(mins, ListView.Center)
-                    secondListView.positionViewAtIndex(seconds, ListView.Center)
+                    setTime(new Date().toLocaleString(Qt.locale(), "hh"),
+                            new Date().toLocaleString(Qt.locale(), "mm"),
+                            new Date().toLocaleString(Qt.locale(), "ss"))
                 }
             }
 
             onTriggered:{
                 if(enableTimer){
-                        seconds = seconds + 1
-                        if(seconds>59){
-                            secondListView.positionViewAtBeginning()
-                            seconds = 0
-                            mins = mins + 1;
-                        }
-                        if(mins>59){
-                            mins = 0
-                            hours = hours + 1
-                        }
-                        if(hours>23){
-                            hours=0
-                        }
+                    seconds = seconds + 1
+                    if(seconds>59){
+                        secondListView.positionViewAtBeginning()
+                        seconds = 0
+                        mins = mins + 1;
+                    }
+                    if(mins>59){
+                        mins = 0
+                        hours = hours + 1
+                    }
+                    if(hours>23){
+                        hours=0
+                    }
                 }
             }
         }
+    }
+
+    function setTime(h,m,s){
+        hours = h
+        mins = m
+        seconds = s
+        hourListView.positionViewAtIndex(hours, ListView.Center)
+        minListView.positionViewAtIndex(mins, ListView.Center)
+        secondListView.positionViewAtIndex(seconds, ListView.Center)
     }
 
 
