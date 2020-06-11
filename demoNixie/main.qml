@@ -20,7 +20,7 @@ Item {
     property int minute: 0
     property int second: 0
     property var iconList: ["images/reset.png", "", ""]
-    property string utc: "  UTC\n+2:00"
+    property string utc: "UTC\n+2:00"
     property var buttonTextList: ["", " Set\nTime", utc]
     property bool btEnable: false
 
@@ -59,7 +59,7 @@ Item {
         Rectangle{
             id: colorSelectionArea
             width: parent.width
-            height: 60
+            height: 45
             anchors {   top: title.bottom; topMargin: bigMargin}
             color : backgroundColor
             Repeater{
@@ -67,14 +67,14 @@ Item {
                 anchors{horizontalCenter: parent.horizontalCenter}
                 delegate: ColorSelector {
                     _color: colorList[index]
-                    x: (size + smallMargin)*index
+                    x: (45 + smallMargin)*index
                 }
             }
         }
 
         ScrollableClock {
             id: clock
-            anchors{top: colorSelectionArea.bottom; horizontalCenter: parent.horizontalCenter}
+            anchors{top: colorSelectionArea.bottom; horizontalCenter: parent.horizontalCenter; topMargin: mediumMargin}
             fontColor: policeColor
             backgroundColor: element.backgroundColor
             fontSize: 60
@@ -83,7 +83,7 @@ Item {
 
         ScrollableClock {
             id: fakeClock
-            anchors{top: colorSelectionArea.bottom; horizontalCenter: parent.horizontalCenter}
+            anchors{top: colorSelectionArea.bottom; horizontalCenter: parent.horizontalCenter; topMargin: mediumMargin}
             fontColor: policeColor
             backgroundColor: element.backgroundColor
             fontSize: 60
@@ -93,13 +93,14 @@ Item {
 
         Row {
             id: timeButtons
-            anchors{top: clock.bottom; horizontalCenter: parent.horizontalCenter; topMargin: bigMargin}
+            anchors{top: clock.bottom; horizontalCenter: parent.horizontalCenter; topMargin: mediumMargin}
             spacing: 40
             DemoNixieButton{
                 id: resetTimeButton
                 _color: "#333333"
                 size: 50
-                iconSource: "images/reset.png"
+                iconSource: "images/resetWhite.png"
+                icon.color: "white"
                 fontSize: 16
                 onClicked: {
                     clock.resetTime()
@@ -110,8 +111,9 @@ Item {
                 id: setTimeButton
                 _color: "#333333"
                 size: 50
-                _text:"  Set\nTime"
-                fontSize: 16
+                _text:"Set\nTime"
+                fontSize: 14
+                fontBold: true
                 fontColor: "white"
                 onClicked:{
                     clock.visible = false
@@ -132,7 +134,8 @@ Item {
                 _color: "#333333"
                 size: 50
                 _text: utc
-                fontSize: 16
+                fontSize: 14
+                fontBold: true
                 fontColor: "white"
             }
         }
@@ -140,7 +143,7 @@ Item {
 
         Row {
             id: timeSetPlusButtons
-            anchors{top: clock.bottom; horizontalCenter: parent.horizontalCenter; topMargin: bigMargin}
+            anchors{top: clock.bottom; horizontalCenter: parent.horizontalCenter; topMargin: mediumMargin}
             spacing: 30
             visible: false
 
@@ -148,8 +151,9 @@ Item {
                 id: setTimeButton2
                 _color: "#333333"
                 size: 50
-                _text:"  Set\nTime"
-                fontSize: 16
+                _text:"Set\nTime"
+                fontSize: 14
+                fontBold: true
                 fontColor: "white"
                 onClicked:{
                     clock.setTime(fakeClock.hours, fakeClock.mins, fakeClock.seconds)
@@ -168,8 +172,10 @@ Item {
             DemoNixieButton{
                 size:45
                 _color: "#333333"
-                text:"+"
-                fontSize: 30
+                _text:"+"
+                fontSize: 25
+                fontColor: "#bbbbbb"
+                autoRepeat: true
                 onClicked:{
                     if(fakeClock.hours<23)
                         fakeClock.hours = fakeClock.hours + 1
@@ -180,8 +186,10 @@ Item {
             DemoNixieButton{
                 size:45
                 _color: "#333333"
-                text:"+"
-                fontSize: 30
+                _text:"+"
+                fontSize: 25
+                fontColor: "#bbbbbb"
+                autoRepeat: true
                 onClicked:{
                     if(fakeClock.mins<59)
                         fakeClock.mins = fakeClock.mins + 1
@@ -192,8 +200,10 @@ Item {
             DemoNixieButton{
                 size:45
                 _color: "#333333"
-                text:"+"
-                fontSize: 30
+                _text:"+"
+                fontSize: 25
+                fontColor: "#bbbbbb"
+                autoRepeat: true
                 onClicked:{
                     if(fakeClock.seconds<59)
                         fakeClock.seconds = fakeClock.seconds + 1
@@ -205,8 +215,7 @@ Item {
                 id: setTimeCancelButton
                 _color: "#333333"
                 size: 50
-                _text:"X"
-                fontSize: 16
+                iconSource: "images/crossWhite.png"
                 fontColor: "white"
                 onClicked:{
                     timeButtons.visible = true
@@ -230,8 +239,10 @@ Item {
             DemoNixieButton{
                 size:45
                 _color: "#333333"
-                text:"-"
-                fontSize: 30
+                _text:"-"
+                fontSize: 25
+                fontColor: "#bbbbbb"
+                autoRepeat: true
                 onClicked:{
                     if(fakeClock.hours>0)
                         fakeClock.hours = fakeClock.hours - 1
@@ -242,8 +253,10 @@ Item {
             DemoNixieButton{
                 size:45
                 _color: "#333333"
-                text:"-"
-                fontSize: 30
+                _text:"-"
+                fontSize: 25
+                fontColor: "#bbbbbb"
+                autoRepeat: true
                 onClicked:{
                     if(fakeClock.mins>0)
                         fakeClock.mins = fakeClock.mins - 1
@@ -254,8 +267,10 @@ Item {
             DemoNixieButton{
                 size:45
                 _color: "#333333"
-                text:"-"
-                fontSize: 30
+                _text:"-"
+                fontSize: 25
+                fontColor: "#bbbbbb"
+                autoRepeat: true
                 onClicked:{
                     if(fakeClock.seconds>0)
                         fakeClock.seconds = fakeClock.seconds - 1
@@ -269,11 +284,12 @@ Item {
             anchors{left: parent.left; top: parent.top}
             size:50
             _color: "#333333"
-            iconSource: "images/bluetoothIcon.png"
+            iconSource: "images/bluetoothIconWhite.png"
+            icon.color: "white"
             onClicked: {
                if(!btEnable){
                    btEnable = true
-                   _color = "#0000a1"
+                   _color = "#000066"
                }
                else{
                    btEnable = false
@@ -288,7 +304,8 @@ Item {
             anchors{top: timeButtons.bottom; horizontalCenter: parent.horizontalCenter; topMargin: bigMargin}
             size:60
             _color: "#333333"
-            iconSource: "images/senbByBluetooth.png"
+            iconSource: "images/senbByBluetoothWhite.png"
+            icon.color: "white"
         }
     }
 }
