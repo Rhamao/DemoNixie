@@ -19,16 +19,8 @@ Item {
     property int hour: 0
     property int minute: 0
     property int second: 0
-    property var iconList: ["images/reset.png", "", ""]
-    property string utc: "UTC\n+2:00"
-    property var buttonTextList: ["", " Set\nTime", utc]
     property bool btEnable: false
 
-    Loader
-    {
-      id: myLoader
-      source: "ScrollableClock.qml"
-    }
 
     //Background
     Rectangle
@@ -79,7 +71,6 @@ Item {
             backgroundColor: element.backgroundColor
             fontSize: 60
             enableTimer: true
-            utc: -18
         }
 
         ScrollableClock {
@@ -104,7 +95,7 @@ Item {
                 icon.color: "white"
                 fontSize: 16
                 onClicked: {
-                    clock.resetTime()
+                    clock.resetTimeWithUTC()
                 }
             }
 
@@ -119,7 +110,7 @@ Item {
                 onClicked:{
                     clock.visible = false
                     fakeClock.visible = true
-                    fakeClock.setTime(clock.hours, clock.mins, clock.seconds)
+                    fakeClock.setTimeWithoutUTC(clock.hours, clock.mins, clock.seconds)
                     timeButtons.visible = false
                     btSendButton.visible = false
                     timeSetPlusButtons.visible = true
@@ -134,10 +125,20 @@ Item {
                 id: setUtcButton
                 _color: "#333333"
                 size: 50
-                _text: utc
+                _text: "UTC\n+" + clock.utc
                 fontSize: 14
                 fontBold: true
                 fontColor: "white"
+                onClicked: {
+                    clock.visible = false
+                    utcArea.visible = true
+                    utcSetPlusButtons.visible = true
+                    utcSetMinusButton.visible = true
+                    timeButtons.visible = false
+                    btSendButton.visible = false
+                    utcListView.currentIndex=clock.utc+12
+                    utcListView.positionViewAtIndex(clock.utc+12, ListView.Center);
+                }
             }
         }
 
@@ -157,7 +158,7 @@ Item {
                 fontBold: true
                 fontColor: "white"
                 onClicked:{
-                    clock.setTime(fakeClock.hours, fakeClock.mins, fakeClock.seconds)
+                    clock.setTimeWithoutUTC(fakeClock.hours, fakeClock.mins, fakeClock.seconds)
                     timeButtons.visible = true
                     btSendButton.visible = true
                     timeSetPlusButtons.visible = false
@@ -308,5 +309,109 @@ Item {
             iconSource: "images/senbByBluetoothWhite.png"
             icon.color: "white"
         }
+
+
+        Rectangle{
+            id:utcArea
+            color: "black"
+            width: 60*2
+            height: 60*2
+            anchors{top: colorSelectionArea.bottom; horizontalCenter: parent.horizontalCenter; topMargin: mediumMargin}
+            visible: false
+            ScrollView {
+                id: utcScrollView
+                anchors.verticalCenter: parent.verticalCenter
+                width: parent.width
+                height: parent.height
+                clip: true
+                enabled: false
+                ListView {
+                    id:utcListView
+                    model: 27
+                    currentIndex: fakeUTC
+                    delegate: ScrollableNumber {
+                        _text: index - 12
+                        fontColor: "white"
+                        fontSize: 60
+                    }
+                }
+            }
+        }
+
+        Row{
+            id:utcSetPlusButtons
+            anchors{top: clock.bottom; horizontalCenter: parent.horizontalCenter; topMargin: mediumMargin}
+            spacing: timeSetPlusButtons.spacing
+            visible: false
+
+            DemoNixieButton{
+                id: setUtcButton2
+                _color: "#333333"
+                size: 50
+                _text:"Set\nUTC"
+                fontSize: 14
+                fontBold: true
+                fontColor: "white"
+                onClicked:{
+                    clock.utc=utcListView.currentIndex-12
+                    clock.resetTimeWithUTC()
+                    clock.visible = true
+                    utcArea.visible = false
+                    utcSetPlusButtons.visible = false
+                    utcSetMinusButton.visible = false
+                    timeButtons.visible = true
+                    btSendButton.visible = true
+                }
+            }
+
+            DemoNixieButton{
+                size:45
+                _color: "#333333"
+                _text:"+"
+                fontSize: 25
+                fontColor: "#bbbbbb"
+                autoRepeat: true
+                onClicked:{
+                    if(utcListView.currentIndex<26)
+                        utcListView.currentIndex++
+                    console.log("UTCindex",  utcListView.currentIndex)
+                }
+            }
+
+            DemoNixieButton{
+                id: setUtcCancelButton
+                _color: "#333333"
+                size: 50
+                iconSource: "images/crossWhite.png"
+                fontColor: "white"
+                onClicked:{
+                    clock.visible = true
+                    utcArea.visible = false
+                    utcSetPlusButtons.visible = false
+                    utcSetMinusButton.visible = false
+                    timeButtons.visible = true
+                    btSendButton.visible = true
+                }
+            }
+
+        }
+
+        DemoNixieButton{
+            id:utcSetMinusButton
+            size:45
+            anchors{top: utcSetPlusButtons.bottom; horizontalCenter: parent.horizontalCenter; topMargin: smallMargin*2}
+            _color: "#333333"
+            _text:"-"
+            fontSize: 25
+            fontColor: "#bbbbbb"
+            autoRepeat: true
+            visible: false
+            onClicked:{
+                if(utcListView.currentIndex>0)
+                    utcListView.currentIndex--
+                console.log("UTCindex",  utcListView.currentIndex)
+            }
+        }
+
     }
 }

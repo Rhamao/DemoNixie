@@ -19,7 +19,7 @@ Rectangle{
     property int mins: 0
     property int delay: 0
     property bool enableTimer: true
-    property int utc: -13
+    property int utc: tiZone.timeZone
 
     TimeZone{
         id:tiZone
@@ -35,10 +35,6 @@ Rectangle{
         ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
         ScrollBar.vertical.policy: ScrollBar.AlwaysOff
         enabled: false
-
-
-
-
         ListView {
             id: hourListView
             model: 24
@@ -110,16 +106,12 @@ Rectangle{
         visible: false
         enabled: enableTimer
         Timer {
-
             interval: 1000; running: enableTimer; repeat: true
             Component.onCompleted:{
                 if(enableTimer){
                     //const test = new Date().setUTCHours(5)
                     //test
-                    setTime(new Date().toLocaleString(Qt.locale(), "hh"),
-                            new Date().toLocaleString(Qt.locale(), "mm"),
-                            new Date().toLocaleString(Qt.locale(), "ss"))
-
+                    resetTimeWithUTC();
                 }
             }
 
@@ -143,15 +135,8 @@ Rectangle{
         }
     }
 
-    function setTime(h,m,s){
+    function setTimeWithoutUTC(h,m,s){
         hours = h
-        if(utc>=-18 && utc<=14){
-            hours = hours - tiZone.timeZone + utc
-            if(hours<0)
-                hours = 24 + hours
-            if(hours>23)
-                hours = hours - 24
-        }
         mins = m
         seconds = s
         hourListView.positionViewAtIndex(hours, ListView.Center)
@@ -159,10 +144,22 @@ Rectangle{
         secondListView.positionViewAtIndex(seconds, ListView.Center)
     }
 
-    function resetTime(){
-        setTime(new Date().toLocaleString(Qt.locale(), "hh"),
-                new Date().toLocaleString(Qt.locale(), "mm"),
-                new Date().toLocaleString(Qt.locale(), "ss"))
+    function resetTimeWithUTC(){
+        hours = new Date().toLocaleString(Qt.locale(), "hh")
+        if(utc!==tiZone.timeZone){
+            if(utc>=-12 && utc<=14){
+                hours = hours - tiZone.timeZone + utc
+                if(hours<0)
+                    hours = 24 + hours
+                if(hours>23)
+                    hours = hours - 24
+            }
+        }
+        mins = new Date().toLocaleString(Qt.locale(), "mm")
+        seconds = new Date().toLocaleString(Qt.locale(), "ss")
+        hourListView.positionViewAtIndex(hours, ListView.Center)
+        minListView.positionViewAtIndex(mins, ListView.Center)
+        secondListView.positionViewAtIndex(seconds, ListView.Center)
     }
 
 
