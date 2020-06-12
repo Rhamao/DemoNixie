@@ -124,11 +124,15 @@ Item {
             DemoNixieButton{
                 id: setUtcButton
                 _color: "#333333"
+                _text: (clock.utc>=0)? "UTC\n+"+clock.utc : "UTC\n"+clock.utc
                 size: 50
-                _text: "UTC\n+" + clock.utc
                 fontSize: 14
                 fontBold: true
                 fontColor: "white"
+                Component.onCompleted:{
+                    updateButtonText()
+                }
+
                 onClicked: {
                     clock.visible = false
                     utcArea.visible = true
@@ -328,7 +332,6 @@ Item {
                 ListView {
                     id:utcListView
                     model: 27
-                    currentIndex: fakeUTC
                     delegate: ScrollableNumber {
                         _text: index - 12
                         fontColor: "white"
