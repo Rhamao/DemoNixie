@@ -19,7 +19,7 @@ Rectangle{
     property int mins: 0
     property int delay: 0
     property bool enableTimer: true
-    property int utc: 0
+    property int utc: -13
 
     TimeZone{
         id:tiZone
@@ -145,7 +145,13 @@ Rectangle{
 
     function setTime(h,m,s){
         hours = h
-        hours = hours - tiZone.timeZone + utc
+        if(utc>=-18 && utc<=14){
+            hours = hours - tiZone.timeZone + utc
+            if(hours<0)
+                hours = 24 + hours
+            if(hours>23)
+                hours = hours - 24
+        }
         mins = m
         seconds = s
         hourListView.positionViewAtIndex(hours, ListView.Center)

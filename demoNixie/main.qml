@@ -79,6 +79,7 @@ Item {
             backgroundColor: element.backgroundColor
             fontSize: 60
             enableTimer: true
+            utc: -18
         }
 
         ScrollableClock {
