@@ -23,7 +23,7 @@ Rectangle{
 
     TimeZone{
         id:tiZone
-        Component.onCompleted: cpp.handleTimeZoneInit(timeZone);
+        Component.onCompleted: cpp.handleTimeZoneInit(tiZone);
     }
 
     ScrollView {
@@ -111,7 +111,7 @@ Rectangle{
                 if(enableTimer){
                     //const test = new Date().setUTCHours(5)
                     //test
-                    resetTimeWithUTC();
+                    setUtcTime();
                 }
             }
 
@@ -135,7 +135,7 @@ Rectangle{
         }
     }
 
-    function setTimeWithoutUTC(h,m,s){
+    function setTime(h,m,s){
         hours = h
         mins = m
         seconds = s
@@ -144,7 +144,7 @@ Rectangle{
         secondListView.positionViewAtIndex(seconds, ListView.Center)
     }
 
-    function resetTimeWithUTC(){
+    function setUtcTime(){
         hours = new Date().toLocaleString(Qt.locale(), "hh")
         if(utc!==tiZone.timeZone){
             if(utc>=-12 && utc<=14){
@@ -155,6 +155,16 @@ Rectangle{
                     hours = hours - 24
             }
         }
+        mins = new Date().toLocaleString(Qt.locale(), "mm")
+        seconds = new Date().toLocaleString(Qt.locale(), "ss")
+        hourListView.positionViewAtIndex(hours, ListView.Center)
+        minListView.positionViewAtIndex(mins, ListView.Center)
+        secondListView.positionViewAtIndex(seconds, ListView.Center)
+    }
+
+    function resetLocalTime(){
+        utc=tiZone.timeZone
+        hours = new Date().toLocaleString(Qt.locale(), "hh")
         mins = new Date().toLocaleString(Qt.locale(), "mm")
         seconds = new Date().toLocaleString(Qt.locale(), "ss")
         hourListView.positionViewAtIndex(hours, ListView.Center)

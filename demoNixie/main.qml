@@ -95,7 +95,7 @@ Item {
                 icon.color: "white"
                 fontSize: 16
                 onClicked: {
-                    clock.resetTimeWithUTC()
+                    clock.resetLocalTime()
                 }
             }
 
@@ -110,7 +110,7 @@ Item {
                 onClicked:{
                     clock.visible = false
                     fakeClock.visible = true
-                    fakeClock.setTimeWithoutUTC(clock.hours, clock.mins, clock.seconds)
+                    fakeClock.setTime(clock.hours, clock.mins, clock.seconds)
                     timeButtons.visible = false
                     btSendButton.visible = false
                     timeSetPlusButtons.visible = true
@@ -129,10 +129,6 @@ Item {
                 fontSize: 14
                 fontBold: true
                 fontColor: "white"
-                Component.onCompleted:{
-                    updateButtonText()
-                }
-
                 onClicked: {
                     clock.visible = false
                     utcArea.visible = true
@@ -162,7 +158,7 @@ Item {
                 fontBold: true
                 fontColor: "white"
                 onClicked:{
-                    clock.setTimeWithoutUTC(fakeClock.hours, fakeClock.mins, fakeClock.seconds)
+                    clock.setTime(fakeClock.hours, fakeClock.mins, fakeClock.seconds)
                     timeButtons.visible = true
                     btSendButton.visible = true
                     timeSetPlusButtons.visible = false
@@ -357,7 +353,7 @@ Item {
                 fontColor: "white"
                 onClicked:{
                     clock.utc=utcListView.currentIndex-12
-                    clock.resetTimeWithUTC()
+                    clock.setUtcTime()
                     clock.visible = true
                     utcArea.visible = false
                     utcSetPlusButtons.visible = false
