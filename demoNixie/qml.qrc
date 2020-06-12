@@ -7,8 +7,8 @@
         <file>ScrollableNumber.qml</file>
         <file>DemoNixieButton.qml</file>
         <file>images/senbByBluetoothWhite.png</file>
-        <file>images/resetWhite.png</file>
-        <file>images/bluetoothIconWhite.png</file>
         <file>images/crossWhite.png</file>
+        <file>images/bluetoothIconWhite.png</file>
+        <file>images/resetWhite.png</file>
     </qresource>
 </RCC>

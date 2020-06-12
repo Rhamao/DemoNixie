@@ -1,6 +1,7 @@
 import QtQuick 2.14
 import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
+import TimeZone 1.0
 
 
 //Home page
@@ -18,6 +19,12 @@ Rectangle{
     property int mins: 0
     property int delay: 0
     property bool enableTimer: true
+    property int utc: 0
+
+    TimeZone{
+        id:tiZone
+        Component.onCompleted: cpp.handleTimeZoneInit(timeZone);
+    }
 
     ScrollView {
         id: hour
@@ -28,6 +35,10 @@ Rectangle{
         ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
         ScrollBar.vertical.policy: ScrollBar.AlwaysOff
         enabled: false
+
+
+
+
         ListView {
             id: hourListView
             model: 24
@@ -42,6 +53,7 @@ Rectangle{
         id: dots
         font.pointSize: fontSize
         color: fontColor
+        //text: tiZone.timeZone
         text: qsTr(":")
         anchors{verticalCenter: parent.verticalCenter; right: min.left}
     }
@@ -133,6 +145,7 @@ Rectangle{
 
     function setTime(h,m,s){
         hours = h
+        hours = hours - tiZone.timeZone + utc
         mins = m
         seconds = s
         hourListView.positionViewAtIndex(hours, ListView.Center)

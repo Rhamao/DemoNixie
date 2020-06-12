@@ -1,5 +1,6 @@
 QT += quick \
     qml
+    core
 
 CONFIG += c++11
 
@@ -18,7 +19,8 @@ SOURCES += \
         main.cpp \
         qmlapp.cpp \
         qmlappfunc.cpp \
-        qmlappview.cpp
+        qmlappview.cpp \
+        scrollableClock.cpp
 
 RESOURCES +=    qml.qrc
 
@@ -34,6 +36,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    qmlapp.h
+    qmlapp.h \
+    scrollableClock.h
 
 DISTFILES +=

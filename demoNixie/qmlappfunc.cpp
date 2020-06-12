@@ -5,3 +5,7 @@
 
 #include "qmlapp.h"
 
+void QmlApp::handleTimeZoneInit(QObject *obj)
+{
+    clock = (TimeZone*) obj;
+}

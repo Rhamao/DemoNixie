@@ -8,7 +8,7 @@
 #include <QtQml/QQmlApplicationEngine>
 #include <QtQml/QQmlContext>
 
-
+#include "scrollableClock.h"
 
 
 
@@ -30,6 +30,7 @@ signals:
 
 public slots:
 //    void    handleChecker(int val);
+    void handleTimeZoneInit(QObject *obj);
 private slots:
     void    viewChanger(int id);
     void    loadMain();
@@ -37,6 +38,7 @@ private slots:
 
 private:
     int m_pageId;
+    TimeZone *clock;
 };
 
 #endif // QMLAPP_H
