@@ -515,7 +515,7 @@ Text Label 4100 10050 3    50   ~ 0
 Text Label 4250 10050 3    50   ~ 0
 3-9-G
 Text Label 4400 10050 3    50   ~ 0
-3-8-R
+3-9-R
 $Comp
 L DemoNixie-rescue:WL-SFCC-PERSO D4
 U 1 1 5EC4B1C6
@@ -549,7 +549,7 @@ Text Label 5300 2450 3    50   ~ 0
 Text Label 5450 2450 3    50   ~ 0
 4-1-G
 Text Label 5600 2450 3    50   ~ 0
-4-1-B
+4-1-R
 $Comp
 L DemoNixie-rescue:WL-SFCC-PERSO D14
 U 1 1 5EC4B202
@@ -1144,8 +1144,6 @@ F 3 "~" H 11350 2300 50  0001 C CNN
 	1    11150 2300
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	10950 2200 10950 2300
 Connection ~ 10950 2300
 $Comp
 L Device:C_Small Css1
@@ -1177,17 +1175,6 @@ Wire Wire Line
 	8100 2600 8100 2700
 Wire Wire Line
 	8000 2600 8100 2600
-$Comp
-L power:VPP #PWR019
-U 1 1 5ECFF185
-P 10950 2200
-F 0 "#PWR019" H 10950 2050 50  0001 C CNN
-F 1 "VPP" H 10965 2373 50  0001 C CNN
-F 2 "" H 10950 2200 50  0001 C CNN
-F 3 "" H 10950 2200 50  0001 C CNN
-	1    10950 2200
-	1    0    0    -1  
-$EndComp
 $Comp
 L power:VPP #PWR01
 U 1 1 5ED00165
@@ -1884,65 +1871,65 @@ Text Label 13850 5400 3    50   ~ 0
 LDI-3
 Text Label 13750 5400 3    50   ~ 0
 SDI-3
-Text Label 12550 5050 2    50   ~ 0
-2-0-R
-Text Label 12550 4950 2    50   ~ 0
-2-0-G
-Text Label 12550 4850 2    50   ~ 0
-2-0-B
-Text Label 12550 4750 2    50   ~ 0
-2-1-R
-Text Label 12550 4650 2    50   ~ 0
-2-1-G
-Text Label 12550 4550 2    50   ~ 0
-2-1-B
-Text Label 12550 4450 2    50   ~ 0
-2-2-R
-Text Label 12550 4350 2    50   ~ 0
-2-2-G
-Text Label 12550 4250 2    50   ~ 0
-2-2-B
-Text Label 12550 4150 2    50   ~ 0
-2-3-R
-Text Label 12550 4050 2    50   ~ 0
-2-3-G
-Text Label 12550 3950 2    50   ~ 0
-2-3-B
-Text Label 12550 3850 2    50   ~ 0
-2-4-R
 Text Label 12550 3750 2    50   ~ 0
-2-4-G
+2-0-R
 Text Label 12550 3650 2    50   ~ 0
-2-4-B
+2-0-G
 Text Label 12550 3550 2    50   ~ 0
-2-5-R
-Text Label 14050 3550 0    50   ~ 0
-2-5-G
-Text Label 14050 3650 0    50   ~ 0
-2-5-B
-Text Label 14050 3750 0    50   ~ 0
-2-6-R
-Text Label 14050 3850 0    50   ~ 0
-2-6-G
-Text Label 14050 3950 0    50   ~ 0
-2-6-B
-Text Label 14050 4050 0    50   ~ 0
-2-7-R
-Text Label 14050 4150 0    50   ~ 0
-2-7-G
-Text Label 14050 4250 0    50   ~ 0
-2-7-B
-Text Label 14050 4350 0    50   ~ 0
-2-8-R
-Text Label 14050 4450 0    50   ~ 0
-2-8-G
-Text Label 14050 4550 0    50   ~ 0
-2-8-B
-Text Label 14050 4650 0    50   ~ 0
-2-9-R
-Text Label 14050 4750 0    50   ~ 0
-2-9-G
+2-0-B
+Text Label 12550 4050 2    50   ~ 0
+2-1-R
+Text Label 12550 3950 2    50   ~ 0
+2-1-G
+Text Label 12550 3850 2    50   ~ 0
+2-1-B
+Text Label 12550 4350 2    50   ~ 0
+2-2-R
+Text Label 12550 4250 2    50   ~ 0
+2-2-G
+Text Label 12550 4150 2    50   ~ 0
+2-2-B
+Text Label 12550 4650 2    50   ~ 0
+2-3-R
+Text Label 12550 4550 2    50   ~ 0
+2-3-G
+Text Label 12550 4450 2    50   ~ 0
+2-3-B
+Text Label 12550 4950 2    50   ~ 0
+2-4-R
+Text Label 12550 4850 2    50   ~ 0
+2-4-G
+Text Label 12550 4750 2    50   ~ 0
+2-4-B
 Text Label 14050 4850 0    50   ~ 0
+2-5-R
+Text Label 14050 4950 0    50   ~ 0
+2-5-G
+Text Label 14050 5050 0    50   ~ 0
+2-5-B
+Text Label 14050 4550 0    50   ~ 0
+2-6-R
+Text Label 14050 4650 0    50   ~ 0
+2-6-G
+Text Label 14050 4750 0    50   ~ 0
+2-6-B
+Text Label 14050 4250 0    50   ~ 0
+2-7-R
+Text Label 14050 4350 0    50   ~ 0
+2-7-G
+Text Label 14050 4450 0    50   ~ 0
+2-7-B
+Text Label 14050 3950 0    50   ~ 0
+2-8-R
+Text Label 14050 4050 0    50   ~ 0
+2-8-G
+Text Label 14050 4150 0    50   ~ 0
+2-8-B
+Text Label 14050 3650 0    50   ~ 0
+2-9-R
+Text Label 14050 3750 0    50   ~ 0
+2-9-G
+Text Label 14050 3850 0    50   ~ 0
 2-9-B
 $Comp
 L Device:R RFB1-2
@@ -2237,8 +2224,6 @@ F 3 "~" H 16150 2300 50  0001 C CNN
 	1    15950 2300
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	15750 2200 15750 2300
 Connection ~ 15750 2300
 $Comp
 L Device:C_Small Css2
@@ -2270,17 +2255,6 @@ Wire Wire Line
 	12900 2600 12900 2700
 Wire Wire Line
 	12800 2600 12900 2600
-$Comp
-L power:VPP #PWR021
-U 1 1 5EE2E9C7
-P 15750 2200
-F 0 "#PWR021" H 15750 2050 50  0001 C CNN
-F 1 "VPP" H 15765 2373 50  0001 C CNN
-F 2 "" H 15750 2200 50  0001 C CNN
-F 3 "" H 15750 2200 50  0001 C CNN
-	1    15750 2200
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	15750 2300 15950 2300
 Wire Wire Line
@@ -2398,65 +2372,65 @@ F 3 "~" H 14650 2650 50  0001 C CNN
 	1    14650 2650
 	0    1    1    0   
 $EndComp
-Text Label 7650 9800 2    50   ~ 0
-3-0-R
-Text Label 7650 9700 2    50   ~ 0
-3-0-G
-Text Label 7650 9600 2    50   ~ 0
-3-0-B
-Text Label 7650 9500 2    50   ~ 0
-3-1-R
-Text Label 7650 9400 2    50   ~ 0
-3-1-G
-Text Label 7650 9300 2    50   ~ 0
-3-1-B
-Text Label 7650 9200 2    50   ~ 0
-3-2-R
-Text Label 7650 9100 2    50   ~ 0
-3-2-G
-Text Label 7650 9000 2    50   ~ 0
-3-2-B
-Text Label 7650 8900 2    50   ~ 0
-3-3-R
-Text Label 7650 8800 2    50   ~ 0
-3-3-G
-Text Label 7650 8700 2    50   ~ 0
-3-3-B
-Text Label 7650 8600 2    50   ~ 0
-3-4-R
 Text Label 7650 8500 2    50   ~ 0
-3-4-G
+3-0-R
 Text Label 7650 8400 2    50   ~ 0
-3-4-B
+3-0-G
 Text Label 7650 8300 2    50   ~ 0
-3-5-R
-Text Label 9150 8300 0    50   ~ 0
-1-5-G
-Text Label 9150 8400 0    50   ~ 0
-3-5-B
-Text Label 9150 8500 0    50   ~ 0
-3-6-R
-Text Label 9150 8600 0    50   ~ 0
-3-6-G
-Text Label 9150 8700 0    50   ~ 0
-3-6-B
-Text Label 9150 8800 0    50   ~ 0
-3-7-R
-Text Label 9150 8900 0    50   ~ 0
-3-7-G
-Text Label 9150 9000 0    50   ~ 0
-3-7-B
-Text Label 9150 9100 0    50   ~ 0
-3-8-R
-Text Label 9150 9200 0    50   ~ 0
-3-8-G
-Text Label 9150 9300 0    50   ~ 0
-3-8-B
-Text Label 9150 9400 0    50   ~ 0
-3-9-R
-Text Label 9150 9500 0    50   ~ 0
-3-9-G
+3-0-B
+Text Label 7650 8800 2    50   ~ 0
+3-1-R
+Text Label 7650 8700 2    50   ~ 0
+3-1-G
+Text Label 7650 8600 2    50   ~ 0
+3-1-B
+Text Label 7650 9100 2    50   ~ 0
+3-2-R
+Text Label 7650 9000 2    50   ~ 0
+3-2-G
+Text Label 7650 8900 2    50   ~ 0
+3-2-B
+Text Label 7650 9400 2    50   ~ 0
+3-3-R
+Text Label 7650 9300 2    50   ~ 0
+3-3-G
+Text Label 7650 9200 2    50   ~ 0
+3-3-B
+Text Label 7650 9700 2    50   ~ 0
+3-4-R
+Text Label 7650 9600 2    50   ~ 0
+3-4-G
+Text Label 7650 9500 2    50   ~ 0
+3-4-B
 Text Label 9150 9600 0    50   ~ 0
+3-5-R
+Text Label 9150 9700 0    50   ~ 0
+3-5-G
+Text Label 9150 9800 0    50   ~ 0
+3-5-B
+Text Label 9150 9300 0    50   ~ 0
+3-6-R
+Text Label 9150 9400 0    50   ~ 0
+3-6-G
+Text Label 9150 9500 0    50   ~ 0
+3-6-B
+Text Label 9150 9000 0    50   ~ 0
+3-7-R
+Text Label 9150 9100 0    50   ~ 0
+3-7-G
+Text Label 9150 9200 0    50   ~ 0
+3-7-B
+Text Label 9150 8700 0    50   ~ 0
+3-8-R
+Text Label 9150 8800 0    50   ~ 0
+3-8-G
+Text Label 9150 8900 0    50   ~ 0
+3-8-B
+Text Label 9150 8400 0    50   ~ 0
+3-9-R
+Text Label 9150 8500 0    50   ~ 0
+3-9-G
+Text Label 9150 8600 0    50   ~ 0
 3-9-B
 $Comp
 L Device:R RFB1-3
@@ -2540,7 +2514,7 @@ $Comp
 L Device:R R11
 U 1 1 5EE43CA0
 P 8300 7300
-F 0 "R11" H 8150 7350 50  0000 L CNN
+F 0 "R11" H 8100 7350 50  0000 L CNN
 F 1 "10k" V 8300 7250 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 8230 7300 50  0001 C CNN
 F 3 "~" H 8300 7300 50  0001 C CNN
@@ -2751,8 +2725,6 @@ F 3 "~" H 11250 7050 50  0001 C CNN
 	1    11050 7050
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	10850 6950 10850 7050
 Connection ~ 10850 7050
 $Comp
 L Device:C_Small Css3
@@ -2784,17 +2756,6 @@ Wire Wire Line
 	8000 7350 8000 7450
 Wire Wire Line
 	7900 7350 8000 7350
-$Comp
-L power:VPP #PWR075
-U 1 1 5EE43D42
-P 10850 6950
-F 0 "#PWR075" H 10850 6800 50  0001 C CNN
-F 1 "VPP" H 10865 7123 50  0001 C CNN
-F 2 "" H 10850 6950 50  0001 C CNN
-F 3 "" H 10850 6950 50  0001 C CNN
-	1    10850 6950
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	10850 7050 11050 7050
 Wire Wire Line
@@ -2912,65 +2873,63 @@ F 3 "~" H 9750 7400 50  0001 C CNN
 	1    9750 7400
 	0    1    1    0   
 $EndComp
-Text Label 12450 9800 2    50   ~ 0
-4-0-R
-Text Label 12450 9700 2    50   ~ 0
-4-0-G
-Text Label 12450 9600 2    50   ~ 0
-4-0-B
-Text Label 12450 9500 2    50   ~ 0
-4-1-R
-Text Label 12450 9400 2    50   ~ 0
-4-1-G
-Text Label 12450 9300 2    50   ~ 0
-4-1-B
-Text Label 12450 9200 2    50   ~ 0
-4-2-R
-Text Label 12450 9100 2    50   ~ 0
-4-2-G
-Text Label 12450 9000 2    50   ~ 0
-4-2-B
-Text Label 12450 8900 2    50   ~ 0
-4-3-R
-Text Label 12450 8800 2    50   ~ 0
-4-3-G
-Text Label 12450 8700 2    50   ~ 0
-4-3-B
-Text Label 12450 8600 2    50   ~ 0
-4-4-R
 Text Label 12450 8500 2    50   ~ 0
-4-4-G
+4-0-R
 Text Label 12450 8400 2    50   ~ 0
-4-4-B
+4-0-G
 Text Label 12450 8300 2    50   ~ 0
-4-5-R
-Text Label 13950 8300 0    50   ~ 0
-4-5-G
-Text Label 13950 8400 0    50   ~ 0
-4-5-B
-Text Label 13950 8500 0    50   ~ 0
-4-6-R
-Text Label 13950 8600 0    50   ~ 0
-4-6-G
-Text Label 13950 8700 0    50   ~ 0
-4-6-B
-Text Label 13950 8800 0    50   ~ 0
-4-7-R
-Text Label 13950 8900 0    50   ~ 0
-4-7-G
-Text Label 13950 9000 0    50   ~ 0
-4-7-B
-Text Label 13950 9100 0    50   ~ 0
-4-8-R
-Text Label 13950 9200 0    50   ~ 0
-4-8-G
-Text Label 13950 9300 0    50   ~ 0
-4-8-B
-Text Label 13950 9400 0    50   ~ 0
-4-9-R
-Text Label 13950 9500 0    50   ~ 0
-4-9-G
+4-0-B
+Text Label 12450 8800 2    50   ~ 0
+4-1-R
+Text Label 12450 8700 2    50   ~ 0
+4-1-G
+Text Label 12450 8600 2    50   ~ 0
+4-1-B
+Text Label 12450 9100 2    50   ~ 0
+4-2-R
+Text Label 12450 9000 2    50   ~ 0
+4-2-G
+Text Label 12450 8900 2    50   ~ 0
+4-2-B
+Text Label 12450 9400 2    50   ~ 0
+4-3-R
+Text Label 12450 9300 2    50   ~ 0
+4-3-G
+Text Label 12450 9200 2    50   ~ 0
+4-3-B
+Text Label 12450 9600 2    50   ~ 0
+4-4-G
+Text Label 12450 9500 2    50   ~ 0
+4-4-B
 Text Label 13950 9600 0    50   ~ 0
+4-5-R
+Text Label 13950 9700 0    50   ~ 0
+4-5-G
+Text Label 13950 9800 0    50   ~ 0
+4-5-B
+Text Label 13950 9300 0    50   ~ 0
+4-6-R
+Text Label 13950 9400 0    50   ~ 0
+4-6-G
+Text Label 13950 9500 0    50   ~ 0
+4-6-B
+Text Label 13950 9000 0    50   ~ 0
+4-7-R
+Text Label 13950 9100 0    50   ~ 0
+4-7-G
+Text Label 13950 9200 0    50   ~ 0
+4-7-B
+Text Label 13950 8700 0    50   ~ 0
+4-8-R
+Text Label 13950 8800 0    50   ~ 0
+4-8-G
+Text Label 13950 8900 0    50   ~ 0
+4-8-B
+Text Label 13950 8400 0    50   ~ 0
+4-9-R
+Text Label 13950 8500 0    50   ~ 0
+4-9-G
+Text Label 13950 8600 0    50   ~ 0
 4-9-B
 $Comp
 L Device:R RFB1-4
@@ -3265,8 +3224,6 @@ F 3 "~" H 16050 7050 50  0001 C CNN
 	1    15850 7050
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	15650 6950 15650 7050
 Connection ~ 15650 7050
 $Comp
 L Device:C_Small Css4
@@ -3298,17 +3255,6 @@ Wire Wire Line
 	12800 7350 12800 7450
 Wire Wire Line
 	12700 7350 12800 7350
-$Comp
-L power:VPP #PWR077
-U 1 1 5EE43EA9
-P 15650 6950
-F 0 "#PWR077" H 15650 6800 50  0001 C CNN
-F 1 "VPP" H 15665 7123 50  0001 C CNN
-F 2 "" H 15650 6950 50  0001 C CNN
-F 3 "" H 15650 6950 50  0001 C CNN
-	1    15650 6950
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	15650 7050 15850 7050
 Wire Wire Line
@@ -3763,6 +3709,60 @@ F 1 "Screw_Terminal" H 10479 11951 50  0000 L CNN
 F 2 "ScrewHoles:screwHole3.1mm" H 10400 12000 50  0001 C CNN
 F 3 "~" H 10400 12000 50  0001 C CNN
 	1    10400 12000
+	1    0    0    -1  
+$EndComp
+Text Label 12450 9700 2    50   ~ 0
+4-4-R
+Wire Wire Line
+	10850 6950 10850 7050
+$Comp
+L power:VPP #PWR075
+U 1 1 5EE43D42
+P 10850 6950
+F 0 "#PWR075" H 10850 6800 50  0001 C CNN
+F 1 "VPP" H 10865 7123 50  0001 C CNN
+F 2 "" H 10850 6950 50  0001 C CNN
+F 3 "" H 10850 6950 50  0001 C CNN
+	1    10850 6950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	15650 6950 15650 7050
+$Comp
+L power:VPP #PWR077
+U 1 1 5EE43EA9
+P 15650 6950
+F 0 "#PWR077" H 15650 6800 50  0001 C CNN
+F 1 "VPP" H 15665 7123 50  0001 C CNN
+F 2 "" H 15650 6950 50  0001 C CNN
+F 3 "" H 15650 6950 50  0001 C CNN
+	1    15650 6950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	15750 2200 15750 2300
+$Comp
+L power:VPP #PWR021
+U 1 1 5EE2E9C7
+P 15750 2200
+F 0 "#PWR021" H 15750 2050 50  0001 C CNN
+F 1 "VPP" H 15765 2373 50  0001 C CNN
+F 2 "" H 15750 2200 50  0001 C CNN
+F 3 "" H 15750 2200 50  0001 C CNN
+	1    15750 2200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10950 2200 10950 2300
+$Comp
+L power:VPP #PWR019
+U 1 1 5ECFF185
+P 10950 2200
+F 0 "#PWR019" H 10950 2050 50  0001 C CNN
+F 1 "VPP" H 10965 2373 50  0001 C CNN
+F 2 "" H 10950 2200 50  0001 C CNN
+F 3 "" H 10950 2200 50  0001 C CNN
+	1    10950 2200
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
