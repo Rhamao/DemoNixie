@@ -107,11 +107,9 @@ Item {
                         console.log("changing color : ", changingColor)
                         }
                         onReleased: {
-                            if(!changingColor)
-                                borderColor = Qt.darker(colorList[index])
                             _color = colorList[index]
                             console.log("released")
-                         }
+                        }
                     }
                 }
             }
