@@ -119,6 +119,9 @@ Item {
             backgroundColor: root.backgroundColor
             fontSize: 60
             enableTimer: true
+            Component.onCompleted: {
+                setUtcButton._text = (clock.utc>=0)? "UTC\n+"+clock.utc+":00" : "UTC\n"+clock.utc+":00"
+            }
         }
 
         ScrollableClock {
@@ -208,6 +211,7 @@ Item {
                 fontSize: 16
                 onClicked: {
                     clock.resetLocalTime()
+                    setUtcButton._text = (clock.utc>=0)? "UTC\n+"+clock.utc+":00" : "UTC\n"+clock.utc+":00"
                 }
             }
 
@@ -236,7 +240,6 @@ Item {
             DemoNixieButton{
                 id: setUtcButton
                 _color: "#333333"
-                _text: (clock.utc>=0)? "UTC\n+"+clock.utc : "UTC\n"+clock.utc
                 size: 50
                 fontSize: 14
                 fontBold: true
@@ -270,7 +273,7 @@ Item {
                 fontBold: true
                 fontColor: "white"
                 onClicked:{
-                    setUtcButton.text="UTC\n?"
+                    setUtcButton._text="UTC\n+?"
                     clock.setTime(fakeClock.hours, fakeClock.mins, fakeClock.seconds)
                     timeButtons.visible = true
                     btSendButton.visible = true
@@ -473,6 +476,7 @@ Item {
                     utcSetMinusButton.visible = false
                     timeButtons.visible = true
                     btSendButton.visible = true
+                    setUtcButton._text = (clock.utc>=0)? "UTC\n+"+clock.utc+":00" : "UTC\n"+clock.utc+":00"
                 }
             }
 
