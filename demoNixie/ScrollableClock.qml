@@ -7,12 +7,14 @@ import TimeZone 1.0
 //Home page
 Rectangle{
     id: root
-    width: fontSize*8
+    width: fontSize*6 + 2*dots.width
     height: fontSize*2
     property color backgroundColor: "black"
-    property color fontColor: "white"
+    property color fontColorHours: "white"
+    property color fontColorMins: "white"
+    property color fontColorSeconds: "white"
+    property color dotsColor: "white"
     property int fontSize: 20
-    property int timeScrollerWidth: fontSize*2
     color: backgroundColor
     property int seconds: 0
     property int hours: 0
@@ -20,6 +22,7 @@ Rectangle{
     property int delay: 0
     property bool enableTimer: true
     property int utc: tiZone.timeZone
+    property int dotsWidth : dots.width
 
     TimeZone{
         id:tiZone
@@ -27,35 +30,36 @@ Rectangle{
     }
 
     ScrollView {
-        id: hour
-        width: timeScrollerWidth
-        height: parent.height
-        clip: true
-        anchors {verticalCenter: parent.verticalCenter; right: dots.left}
-        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
-        ScrollBar.vertical.policy: ScrollBar.AlwaysOff
-        enabled: false
-        ListView {
-            id: hourListView
-            model: 24
-            currentIndex: hours
-            delegate: ScrollableNumber {
-                fontColor: root.fontColor
-                fontSize: root.fontSize
+            id: hour
+            width: fontSize*2
+            height: parent.height
+            clip: true
+            anchors {verticalCenter: parent.verticalCenter; right: dots.left}
+            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+            ScrollBar.vertical.policy: ScrollBar.AlwaysOff
+            enabled: false
+            ListView {
+                id: hourListView
+                model: 24
+                currentIndex: hours
+                delegate: ScrollableNumber {
+                    fontColor: root.fontColorHours
+                    fontSize: root.fontSize
+                }
             }
-        }
     }
+
     Text {
         id: dots
         font.pointSize: fontSize
-        color: fontColor
-        //text: tiZone.timeZone
+        color: dotsColor
         text: qsTr(":")
         anchors{verticalCenter: parent.verticalCenter; right: min.left}
     }
+
     ScrollView {
         id: min
-        width: timeScrollerWidth
+        width: fontSize*2
         height: parent.height
         clip: true
         anchors {verticalCenter: parent.verticalCenter; horizontalCenter: parent.horizontalCenter}
@@ -67,7 +71,7 @@ Rectangle{
             model: 60
             currentIndex: mins
             delegate: ScrollableNumber {
-                fontColor: root.fontColor
+                fontColor: root.fontColorMins
                 fontSize: root.fontSize
             }
         }
@@ -75,13 +79,14 @@ Rectangle{
     Text {
         id: dots2
         font.pointSize: fontSize
-        color: fontColor
+        color: dotsColor
         text: qsTr(":")
         anchors{verticalCenter: parent.verticalCenter; left: min.right}
     }
+
     ScrollView {
         id: second
-        width: timeScrollerWidth
+        width: fontSize*2
         height: parent.height
         clip: true
         anchors {verticalCenter: parent.verticalCenter; left: dots2.right}
@@ -93,7 +98,7 @@ Rectangle{
             model: 60
             currentIndex: seconds
             delegate: ScrollableNumber {
-                fontColor: root.fontColor
+                fontColor: root.fontColorSeconds
                 fontSize: root.fontSize
             }
         }

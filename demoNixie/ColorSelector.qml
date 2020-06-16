@@ -1,22 +1,20 @@
 import QtQuick 2.14
 import QtQuick.Window 2.14
+import QtQuick.Controls 2.14
 
 
 //Home page
-Rectangle{
-    id: root
+
+
+Button{
+    id:root
     property color _color: "red"
     property int size: 45
-    width : size
-    height: size
-    color : (ma.containsMouse) ? Qt.lighter(_color) : _color
-    radius: width
-    MouseArea {
-        id:ma
-        anchors.fill: parent
-        hoverEnabled: true
-        onHoveredChanged: {
-            console.log("hovered :", ma.containsMouse)
-        }
+    Rectangle{
+        width : size
+        height: size
+        radius: size
+        color : !root.down ? _color : Qt.lighter(_color)
     }
 }
+

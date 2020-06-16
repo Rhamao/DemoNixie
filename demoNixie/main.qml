@@ -20,6 +20,32 @@ Item {
     property int minute: 0
     property int second: 0
     property bool btEnable: false
+    property bool changingColor: false
+    property var colorBuffer : "white"
+    property var colorTemp : "white"
+
+    function highlightClock(highlighted){
+        if(highlighted){
+            hoursArea.visible = true
+            minsArea.visible = true
+            secondsArea.visible = true
+            changingColor = true
+        }else{
+            hoursArea.visible = false
+            minsArea.visible = false
+            secondsArea.visible = false
+            changingColor = false
+        }
+    }
+
+    MouseArea{
+        anchors.fill: parent
+        onClicked: {
+            if(changingColor){
+                highlightClock(false)
+            }
+        }
+    }
 
 
     //Background
@@ -55,11 +81,38 @@ Item {
             anchors {   top: title.bottom; topMargin: bigMargin}
             color : backgroundColor
             Repeater{
+                id: rp
                 model:colorList
                 anchors{horizontalCenter: parent.horizontalCenter}
-                delegate: ColorSelector {
+                delegate: DemoNixieButton {
                     _color: colorList[index]
+                    borderColor: colorList[index]
                     x: (45 + smallMargin)*index
+                    MouseArea {
+
+                        id:ma
+                        anchors.fill: parent
+                        onClicked: {
+                            borderColor = Qt.darker(colorList[index])
+                            if(!changingColor){
+                                colorBuffer = colorList[index]
+                                highlightClock(true)
+                            }else if(colorBuffer === colorList[index]){
+                                highlightClock(false)
+                            }else if(colorBuffer !== colorList[index]){
+                                colorBuffer = colorList[index]
+                            }
+                        console.log("color : ", colorList[index])
+                        console.log("color buffer : ", colorBuffer)
+                        console.log("changing color : ", changingColor)
+                        }
+                        onReleased: {
+                            if(!changingColor)
+                                borderColor = Qt.darker(colorList[index])
+                            _color = colorList[index]
+                            console.log("released")
+                         }
+                    }
                 }
             }
         }
@@ -67,7 +120,6 @@ Item {
         ScrollableClock {
             id: clock
             anchors{top: colorSelectionArea.bottom; horizontalCenter: parent.horizontalCenter; topMargin: mediumMargin}
-            fontColor: policeColor
             backgroundColor: element.backgroundColor
             fontSize: 60
             enableTimer: true
@@ -76,11 +128,75 @@ Item {
         ScrollableClock {
             id: fakeClock
             anchors{top: colorSelectionArea.bottom; horizontalCenter: parent.horizontalCenter; topMargin: mediumMargin}
-            fontColor: policeColor
             backgroundColor: element.backgroundColor
             fontSize: 60
             visible: false
             enableTimer: false
+        }
+
+        Row{
+            anchors{left: clock.left; top: clock.top}
+            spacing: clock.dotsWidth
+            opacity: 0.25
+            Rectangle{
+                id:hoursArea
+                width:clock.fontSize*2
+                height: width
+                radius: width
+                color: "white"
+                visible: false
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        if(changingColor){
+                            highlightClock(false)
+                            console.log("hours clicked")
+                            clock.fontColorHours = colorBuffer
+
+                        }
+                    }
+                }
+            }
+
+            Rectangle{
+                id:minsArea
+                width:clock.fontSize*2
+                height: width
+                radius: width
+                color: "white"
+                visible: false
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        if(changingColor){
+                            highlightClock(false)
+                            console.log("mins clicked")
+                            clock.fontColorMins = colorBuffer
+
+                        }
+                    }
+                }
+            }
+
+            Rectangle{
+                id:secondsArea
+                width:clock.fontSize*2
+                height: width
+                radius: width
+                color: "white"
+                visible: false
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        if(changingColor){
+                            highlightClock(false)
+                            console.log("seconds clicked")
+                            clock.fontColorSeconds = colorBuffer
+
+                        }
+                    }
+                }
+            }
         }
 
         Row {
@@ -158,6 +274,7 @@ Item {
                 fontBold: true
                 fontColor: "white"
                 onClicked:{
+                    setUtcButton.text="UTC\n?"
                     clock.setTime(fakeClock.hours, fakeClock.mins, fakeClock.seconds)
                     timeButtons.visible = true
                     btSendButton.visible = true
