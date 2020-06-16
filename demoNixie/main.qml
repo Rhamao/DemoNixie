@@ -5,24 +5,20 @@ import QtQuick.Controls 2.14
 
 //Home page
 Item {
-    id: element
+    id: root
 
     width: 640
     height: 480
     property int smallMargin: 5
     property int mediumMargin: 10
     property int bigMargin: 20
-    property int bigFontSize: 20
     property var colorList: ["red", "pink", "purple", "blue", "green", "yellow", "orange"]
     property string policeColor: "white"
     property string backgroundColor: "black"
-    property int hour: 0
-    property int minute: 0
-    property int second: 0
     property bool btEnable: false
     property bool changingColor: false
-    property var colorBuffer : "white"
-    property var colorTemp : "white"
+    property int indexBuffer : 0
+    property int colorSelectorsSize: 45
 
     function highlightClock(highlighted){
         if(highlighted){
@@ -76,34 +72,36 @@ Item {
 
         Rectangle{
             id: colorSelectionArea
-            width: parent.width
-            height: 45
-            anchors {   top: title.bottom; topMargin: bigMargin}
-            color : backgroundColor
+            width: colorList.length*(colorSelectorsSize + smallMargin)-smallMargin
+            height: colorSelectorsSize
+            anchors {top: title.bottom; topMargin: bigMargin; horizontalCenter: parent.horizontalCenter}
+            color : "transparent"
             Repeater{
                 id: rp
                 model:colorList
-                anchors{horizontalCenter: parent.horizontalCenter}
                 delegate: DemoNixieButton {
+                    size: colorSelectorsSize
                     _color: colorList[index]
                     borderColor: colorList[index]
-                    x: (45 + smallMargin)*index
+                    x: (colorSelectorsSize + smallMargin)*index
                     MouseArea {
-
                         id:ma
                         anchors.fill: parent
                         onClicked: {
                             borderColor = Qt.darker(colorList[index])
                             if(!changingColor){
-                                colorBuffer = colorList[index]
+                                indexBuffer = index
                                 highlightClock(true)
-                            }else if(colorBuffer === colorList[index]){
+                            }else if(indexBuffer === index){
                                 highlightClock(false)
-                            }else if(colorBuffer !== colorList[index]){
-                                colorBuffer = colorList[index]
+                                rp.itemAt(indexBuffer).borderColor = colorList[indexBuffer]
+                                indexBuffer = index
+                            }else if(indexBuffer !== index){
+                                rp.itemAt(indexBuffer).borderColor = colorList[indexBuffer]
+                                indexBuffer = index
                             }
                         console.log("color : ", colorList[index])
-                        console.log("color buffer : ", colorBuffer)
+                        console.log("color buffer : ", indexBuffer)
                         console.log("changing color : ", changingColor)
                         }
                         onReleased: {
@@ -118,7 +116,7 @@ Item {
         ScrollableClock {
             id: clock
             anchors{top: colorSelectionArea.bottom; horizontalCenter: parent.horizontalCenter; topMargin: mediumMargin}
-            backgroundColor: element.backgroundColor
+            backgroundColor: root.backgroundColor
             fontSize: 60
             enableTimer: true
         }
@@ -126,7 +124,7 @@ Item {
         ScrollableClock {
             id: fakeClock
             anchors{top: colorSelectionArea.bottom; horizontalCenter: parent.horizontalCenter; topMargin: mediumMargin}
-            backgroundColor: element.backgroundColor
+            backgroundColor: root.backgroundColor
             fontSize: 60
             visible: false
             enableTimer: false
@@ -149,8 +147,8 @@ Item {
                         if(changingColor){
                             highlightClock(false)
                             console.log("hours clicked")
-                            clock.fontColorHours = colorBuffer
-
+                            clock.fontColorHours = rp.itemAt(indexBuffer)._color
+                            rp.itemAt(indexBuffer).borderColor = colorList[indexBuffer]
                         }
                     }
                 }
@@ -169,8 +167,8 @@ Item {
                         if(changingColor){
                             highlightClock(false)
                             console.log("mins clicked")
-                            clock.fontColorMins = colorBuffer
-
+                            clock.fontColorMins = rp.itemAt(indexBuffer)._color
+                            rp.itemAt(indexBuffer).borderColor = colorList[indexBuffer]
                         }
                     }
                 }
@@ -189,8 +187,8 @@ Item {
                         if(changingColor){
                             highlightClock(false)
                             console.log("seconds clicked")
-                            clock.fontColorSeconds = colorBuffer
-
+                            clock.fontColorSeconds = rp.itemAt(indexBuffer)._color
+                            rp.itemAt(indexBuffer).borderColor = colorList[indexBuffer]
                         }
                     }
                 }
