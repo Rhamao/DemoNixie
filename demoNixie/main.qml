@@ -12,7 +12,7 @@ Item {
     property int smallMargin: 5
     property int mediumMargin: 10
     property int bigMargin: 20
-    property var colorList: ["red", "pink", "purple", "blue", "green", "yellow", "orange"]
+    property var colorList: ["red", "white", "purple", "blue", "green", "yellow", "orange"]
     property string policeColor: "white"
     property string backgroundColor: "black"
     property bool btEnable: false
@@ -20,8 +20,8 @@ Item {
     property int indexBuffer : 0
     property int colorSelectorsSize: 45
 
-    function highlightClock(highlighted){
-        if(highlighted){
+    function enableColorChanging(enabled){
+        if(enabled){
             hoursArea.visible = true
             minsArea.visible = true
             secondsArea.visible = true
@@ -31,6 +31,7 @@ Item {
             minsArea.visible = false
             secondsArea.visible = false
             changingColor = false
+            rp.itemAt(indexBuffer).borderColor = colorList[indexBuffer]
         }
     }
 
@@ -38,7 +39,7 @@ Item {
         anchors.fill: parent
         onClicked: {
             if(changingColor){
-                highlightClock(false)
+                enableColorChanging(false)
             }
         }
     }
@@ -91,10 +92,9 @@ Item {
                             borderColor = Qt.darker(colorList[index])
                             if(!changingColor){
                                 indexBuffer = index
-                                highlightClock(true)
+                                enableColorChanging(true)
                             }else if(indexBuffer === index){
-                                highlightClock(false)
-                                rp.itemAt(indexBuffer).borderColor = colorList[indexBuffer]
+                                enableColorChanging(false)
                                 indexBuffer = index
                             }else if(indexBuffer !== index){
                                 rp.itemAt(indexBuffer).borderColor = colorList[indexBuffer]
@@ -148,10 +148,9 @@ Item {
                     anchors.fill: parent
                     onClicked: {
                         if(changingColor){
-                            highlightClock(false)
+                            enableColorChanging(false)
                             console.log("hours clicked")
                             clock.fontColorHours = rp.itemAt(indexBuffer)._color
-                            rp.itemAt(indexBuffer).borderColor = colorList[indexBuffer]
                         }
                     }
                 }
@@ -168,10 +167,10 @@ Item {
                     anchors.fill: parent
                     onClicked: {
                         if(changingColor){
-                            highlightClock(false)
+                            enableColorChanging(false)
                             console.log("mins clicked")
                             clock.fontColorMins = rp.itemAt(indexBuffer)._color
-                            rp.itemAt(indexBuffer).borderColor = colorList[indexBuffer]
+
                         }
                     }
                 }
@@ -188,10 +187,9 @@ Item {
                     anchors.fill: parent
                     onClicked: {
                         if(changingColor){
-                            highlightClock(false)
+                            enableColorChanging(false)
                             console.log("seconds clicked")
                             clock.fontColorSeconds = rp.itemAt(indexBuffer)._color
-                            rp.itemAt(indexBuffer).borderColor = colorList[indexBuffer]
                         }
                     }
                 }
@@ -224,6 +222,7 @@ Item {
                 fontBold: true
                 fontColor: "white"
                 onClicked:{
+                    enableColorChanging(false);
                     clock.visible = false
                     fakeClock.visible = true
                     fakeClock.setTime(clock.hours, clock.mins, clock.seconds)
@@ -232,6 +231,9 @@ Item {
                     timeSetPlusButtons.visible = true
                     timeSetMinusButtons.visible = true
                     timeButtons.anchors.topMargin = timeButtons.anchors.topMargin + 110
+                    fakeClock.fontColorHours = clock.fontColorHours
+                    fakeClock.fontColorMins = clock.fontColorMins
+                    fakeClock.fontColorSeconds = clock.fontColorSeconds
                     console.log("Clock visible ;", clock.visible)
                     console.log("FakeClock  visible;", fakeClock.visible)
                 }
@@ -245,6 +247,7 @@ Item {
                 fontBold: true
                 fontColor: "white"
                 onClicked: {
+                    enableColorChanging(false)
                     clock.visible = false
                     utcArea.visible = true
                     utcSetPlusButtons.visible = true
