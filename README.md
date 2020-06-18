@@ -1,2 +1,2 @@
 # DemoNixie
-Branche du design de l'application Android en QML.
+Branche de la conception des trames BLE.
