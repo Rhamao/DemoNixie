@@ -36,10 +36,10 @@ public slots:
 
     // service
     void writeAnimation(bool animMode = false,
-                        QColor color0 = Qt::white, uint32_t time0 = 0,
-                        QColor color1 = Qt::white, uint32_t time1 = 0,
-                        QColor color2 = Qt::white, uint32_t time2 = 0);
-    void writeTime(quint8 hour = 0, quint8 minute = 0, quint8 second = 0);
+                        QColor color0 = Qt::white, int time0 = 0,
+                        QColor color1 = Qt::white, int time1 = 0,
+                        QColor color2 = Qt::white, int time2 = 0);
+    void writeTime(int hour = 0, int minute = 0, int second = 0);
 
 signals:
     // discovery

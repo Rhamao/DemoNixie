@@ -22,7 +22,7 @@ void BleWrapper::registerQml()
     qmlRegisterType<BleWrapper>("BleLink", 1, 0, "BleLink");
 }
 
-void BleWrapper::writeAnimation(bool animMode, QColor color0, uint32_t time0, QColor color1, uint32_t time1, QColor color2, uint32_t time2)
+void BleWrapper::writeAnimation(bool animMode, QColor color0, int time0, QColor color1, int time1, QColor color2, int time2)
 {
     if (m_animationFound)
     {
@@ -45,10 +45,11 @@ void BleWrapper::writeAnimation(bool animMode, QColor color0, uint32_t time0, QC
         QByteArray data = QByteArray(c,22);
         m_nixieService->writeCharacteristic(m_animCharac, data, QLowEnergyService::WriteWithoutResponse);
         emit debugSended(QString("Write Animation"));
+        qDebug()<< color0 << time0 << color1 << time1 << color2 << time2;
     }
 }
 
-void BleWrapper::writeTime(quint8 hour, quint8 minute, quint8 second)
+void BleWrapper::writeTime(int hour, int minute, int second)
 {
     if (m_timeFound)
     {

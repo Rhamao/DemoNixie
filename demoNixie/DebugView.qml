@@ -9,6 +9,7 @@ Item {
     id: element
 
     property var colorList: ["red", "green", "blue", "pink", "orange"]
+
     BleLink {
         id:ble
         Component.onCompleted: cpp.handleQmlBleInit(ble);
@@ -60,7 +61,7 @@ Item {
             Layout.fillWidth: true
             property int colorIndex: 0
             onClicked: {
-                ble.writeAnimation(false,"red", 0, "blue", 0, "purple", 0)
+                ble.writeAnimation(false,"red", 42, rectangle.color, 142, "purple", 0)
             }
         }
     }
