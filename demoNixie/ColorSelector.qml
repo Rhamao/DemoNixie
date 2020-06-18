@@ -4,6 +4,7 @@ import QtQuick.Window 2.14
 
 //Home page
 Rectangle{
+
     id: root
     property color colorModel: "red"
     property int size: 45

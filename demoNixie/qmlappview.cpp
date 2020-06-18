@@ -25,5 +25,6 @@ void    QmlApp::loadDbg()
 {
     setSource(QUrl("qrc:/DebugView.qml"));
     m_pageId = V_DBG;
+//    m_bleWrapper = new BleWrapper;
 
 }

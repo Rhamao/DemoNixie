@@ -9,6 +9,7 @@
 #include <QtQml/QQmlContext>
 
 #include "dbglink.h"
+#include "blewrapper.h"
 
 
 #define V_MAIN      1 //  id des views
@@ -30,15 +31,24 @@ signals:
 
 public slots:
     void    handleQmlDbgInit(DbgLink *dbg);
+    void    handleQmlBleInit(BleWrapper *ble);
     void    testButton();
+
+
 private slots:
     void    viewChanger(int id);
     void    loadMain();
     void    loadDbg();
 
 
+    // BLE part
+    void getBleDevice(const QBluetoothDeviceInfo &device);
+    void getBleService(const QBluetoothUuid &service);
+
+
 private:
     int m_pageId;
+    BleWrapper *m_bleWrapper = nullptr;
     DbgLink *m_dbgLink = nullptr;
 
 };

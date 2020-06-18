@@ -16,6 +16,7 @@ public:
     QString text() const { return m_text; }
     void setText(QString str);
 
+
 public slots:
     void append(QString str);
     void appendLine(QString str);
