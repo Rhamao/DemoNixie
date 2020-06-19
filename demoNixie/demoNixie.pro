@@ -51,9 +51,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     qmlapp.h \
-    scrollableClock.h
-
-DISTFILES +=
+    scrollableClock.h \
     blewrapper.h \
-    dbglink.h \
-    qmlapp.h
+    dbglink.h
