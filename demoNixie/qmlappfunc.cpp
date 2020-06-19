@@ -5,6 +5,10 @@
 
 #include "qmlapp.h"
 
+void QmlApp::handleTimeZoneInit(QObject *obj)
+{
+    clock = (TimeZone*) obj;
+}
 void QmlApp::handleQmlDbgInit(DbgLink* obj)
 {
     m_dbgLink = obj;

@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "qmlapp.h"
+#include "scrollableClock.h"
 
 #if defined (Q_OS_ANDROID)
 // from https://forum.qt.io/topic/94795/how-to-request-the-permissions-in-runtime/9
@@ -13,7 +14,7 @@ const QVector<QString> permissions({"android.permission.ACCESS_COARSE_LOCATION",
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-
+    TimeZone b(void);
     QGuiApplication app(argc, argv);
 
 #if defined (Q_OS_ANDROID)
@@ -29,6 +30,7 @@ int main(int argc, char *argv[])
 #endif
 
     QmlApp a;
+
 
     return app.exec();
 }

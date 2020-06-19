@@ -4,12 +4,14 @@
 #include <QtQml/QQmlContext>
 
 #include "qmlapp.h"
+#include <QTimer>
 #include "dbglink.h"
 #include "blewrapper.h"
 
 QmlApp::QmlApp(QWindow *parent) : QQuickView(parent)
 {
     setResizeMode(QQuickView::SizeRootObjectToView);
+    TimeZone::registerQLM();
     DbgLink::registerQml();
     BleWrapper::registerQml();
     rootContext()->setContextProperty("cpp", this); // uncomment this line to use c++ public slot function from QML
@@ -17,6 +19,10 @@ QmlApp::QmlApp(QWindow *parent) : QQuickView(parent)
     viewChanger(V_DBG);
     show();
 }
+
+
+
+
 
 
 /*

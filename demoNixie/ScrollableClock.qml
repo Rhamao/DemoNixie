@@ -1,96 +1,181 @@
 import QtQuick 2.14
 import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
+import TimeZone 1.0
 
 
 //Home page
 Rectangle{
     id: root
-    width: fontSize*8
+    width: fontSize*6 + 2*dots.width
     height: fontSize*2
     property color backgroundColor: "black"
-    property color fontColor: "white"
+    property color fontColorHours: "white"
+    property color fontColorMins: "white"
+    property color fontColorSeconds: "white"
+    property color dotsColor: "white"
     property int fontSize: 20
-    property int timeScrollerWidth: fontSize*2
-    anchors {top: timeArea.bottom; topMargin: smallMargin}
-    color : backgroundColor
+    color: backgroundColor
     property int seconds: 0
     property int hours: 0
     property int mins: 0
-    ScrollView {
-        id: hour
-        width: timeScrollerWidth
-        height: parent.height
-        clip: true
-        anchors {verticalCenter: parent.verticalCenter; right: dots.left}
-        ListView {
-            id: houListView
-            model: 24
-            currentIndex: hours
-            //Component.onCompleted: positionViewAtBeginning()
-            delegate: ScrollableNumber {
-                fontColor: root.fontColor
-                fontSize: root.fontSize
-            }
-            onCurrentIndexChanged:{
-                if(hours == 00)
-                    positionViewAtBeginning();
-            }
-        }
+    property int delay: 0
+    property bool enableTimer: true
+    property int utc: tiZone.timeZone
+    property int dotsWidth : dots.width
+
+    TimeZone{
+        id:tiZone
+        Component.onCompleted: cpp.handleTimeZoneInit(tiZone);
     }
+
+    ScrollView {
+            id: hour
+            width: fontSize*2
+            height: parent.height
+            clip: true
+            anchors {verticalCenter: parent.verticalCenter; right: dots.left}
+            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+            ScrollBar.vertical.policy: ScrollBar.AlwaysOff
+            enabled: false
+            ListView {
+                id: hourListView
+                model: 24
+                currentIndex: hours
+                delegate: ScrollableNumber {
+                    fontColor: root.fontColorHours
+                    fontSize: root.fontSize
+                }
+            }
+    }
+
     Text {
         id: dots
         font.pointSize: fontSize
-        color: fontColor
+        color: dotsColor
         text: qsTr(":")
         anchors{verticalCenter: parent.verticalCenter; right: min.left}
     }
+
     ScrollView {
         id: min
-        width: timeScrollerWidth
-        height: timeChangingArea.height
+        width: fontSize*2
+        height: parent.height
         clip: true
         anchors {verticalCenter: parent.verticalCenter; horizontalCenter: parent.horizontalCenter}
+        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+        ScrollBar.vertical.policy: ScrollBar.AlwaysOff
+        enabled: false
         ListView {
             id: minListView
             model: 60
             currentIndex: mins
             delegate: ScrollableNumber {
-                fontColor: root.fontColor
+                fontColor: root.fontColorMins
                 fontSize: root.fontSize
-            }
-            onCurrentIndexChanged:{
-                if(mins == 00)
-                    positionViewAtBeginning();
             }
         }
     }
     Text {
         id: dots2
         font.pointSize: fontSize
-        color: fontColor
+        color: dotsColor
         text: qsTr(":")
         anchors{verticalCenter: parent.verticalCenter; left: min.right}
     }
+
     ScrollView {
         id: second
-        width: timeScrollerWidth
-        height: timeChangingArea.height
+        width: fontSize*2
+        height: parent.height
         clip: true
         anchors {verticalCenter: parent.verticalCenter; left: dots2.right}
+        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+        ScrollBar.vertical.policy: ScrollBar.AlwaysOff
+        enabled: false
         ListView {
             id: secondListView
             model: 60
             currentIndex: seconds
             delegate: ScrollableNumber {
-                fontColor: root.fontColor
+                fontColor: root.fontColorSeconds
                 fontSize: root.fontSize
             }
-            onCurrentIndexChanged:{
-                if(seconds == 00)
-                    positionViewAtBeginning();
-            }
-
         }
     }
+
+    Rectangle{
+        id: timer
+        width: parent.width
+        height: 60
+        visible: false
+        enabled: enableTimer
+        Timer {
+            interval: 1000; running: enableTimer; repeat: true
+            Component.onCompleted:{
+                if(enableTimer){
+                    //const test = new Date().setUTCHours(5)
+                    //test
+                    setUtcTime();
+                }
+            }
+
+            onTriggered:{
+                if(enableTimer){
+                    seconds = seconds + 1
+                    if(seconds>59){
+                        secondListView.positionViewAtBeginning()
+                        seconds = 0
+                        mins = mins + 1;
+                    }
+                    if(mins>59){
+                        mins = 0
+                        hours = hours + 1
+                    }
+                    if(hours>23){
+                        hours=0
+                    }
+                }
+            }
+        }
+    }
+
+    function setTime(h,m,s){
+        hours = h
+        mins = m
+        seconds = s
+        hourListView.positionViewAtIndex(hours, ListView.Center)
+        minListView.positionViewAtIndex(mins, ListView.Center)
+        secondListView.positionViewAtIndex(seconds, ListView.Center)
+    }
+
+    function setUtcTime(){
+        hours = new Date().toLocaleString(Qt.locale(), "hh")
+        if(utc!==tiZone.timeZone){
+            if(utc>=-12 && utc<=14){
+                hours = hours - tiZone.timeZone + utc
+                if(hours<0)
+                    hours = 24 + hours
+                if(hours>23)
+                    hours = hours - 24
+            }
+        }
+        mins = new Date().toLocaleString(Qt.locale(), "mm")
+        seconds = new Date().toLocaleString(Qt.locale(), "ss")
+        hourListView.positionViewAtIndex(hours, ListView.Center)
+        minListView.positionViewAtIndex(mins, ListView.Center)
+        secondListView.positionViewAtIndex(seconds, ListView.Center)
+    }
+
+    function resetLocalTime(){
+        utc=tiZone.timeZone
+        hours = new Date().toLocaleString(Qt.locale(), "hh")
+        mins = new Date().toLocaleString(Qt.locale(), "mm")
+        seconds = new Date().toLocaleString(Qt.locale(), "ss")
+        hourListView.positionViewAtIndex(hours, ListView.Center)
+        minListView.positionViewAtIndex(mins, ListView.Center)
+        secondListView.positionViewAtIndex(seconds, ListView.Center)
+    }
+
+
 }

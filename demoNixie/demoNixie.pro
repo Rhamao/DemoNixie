@@ -1,6 +1,8 @@
 QT += quick \
     qml \
     bluetooth
+    core
+
 
 CONFIG += c++11
 
@@ -21,9 +23,10 @@ SOURCES += \
         main.cpp \
         qmlapp.cpp \
         qmlappfunc.cpp \
-        qmlappview.cpp
+        qmlappview.cpp \
+        scrollableClock.cpp
 
-RESOURCES += qml.qrc
+RESOURCES +=    qml.qrc
 
 android: {
 
@@ -47,6 +50,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    qmlapp.h \
+    scrollableClock.h
+
+DISTFILES +=
     blewrapper.h \
     dbglink.h \
     qmlapp.h

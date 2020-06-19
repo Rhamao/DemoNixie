@@ -8,6 +8,7 @@
 #include <QtQml/QQmlApplicationEngine>
 #include <QtQml/QQmlContext>
 
+#include "scrollableClock.h"
 #include "dbglink.h"
 #include "blewrapper.h"
 
@@ -30,11 +31,11 @@ public:
 signals:
 
 public slots:
+//    void    handleChecker(int val);
+    void handleTimeZoneInit(QObject *obj);
     void    handleQmlDbgInit(DbgLink *dbg);
     void    handleQmlBleInit(BleWrapper *ble);
     void    testButton();
-
-
 private slots:
     void    viewChanger(int id);
     void    loadMain();
@@ -48,9 +49,9 @@ private slots:
 
 private:
     int m_pageId;
+    TimeZone *clock;
     BleWrapper *m_bleWrapper = nullptr;
     DbgLink *m_dbgLink = nullptr;
-
 };
 
 #endif // QMLAPP_H

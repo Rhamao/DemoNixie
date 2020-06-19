@@ -6,10 +6,12 @@ ItemDelegate {
     height: fontSize*2
     property color fontColor: "white"
     property int fontSize: 20
+    property int _text: index
     Text{
         id: text
+        anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
-        text: index
+        text: _text
         color: fontColor
         font.pointSize: fontSize
     }

@@ -1,11 +1,14 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>ColorSelector.qml</file>
-        <file>main2.qml</file>
         <file>AppTimer.qml</file>
         <file>ScrollableClock.qml</file>
         <file>ScrollableNumber.qml</file>
+        <file>DemoNixieButton.qml</file>
+        <file>images/senbByBluetoothWhite.png</file>
+        <file>images/crossWhite.png</file>
+        <file>images/bluetoothIconWhite.png</file>
+        <file>images/resetWhite.png</file>
         <file>DebugView.qml</file>
         <file>indicatorButton.png</file>
     </qresource>
