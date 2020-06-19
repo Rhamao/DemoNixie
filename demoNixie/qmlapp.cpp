@@ -5,15 +5,18 @@
 
 #include "qmlapp.h"
 #include <QTimer>
-
+#include "dbglink.h"
+#include "blewrapper.h"
 
 QmlApp::QmlApp(QWindow *parent) : QQuickView(parent)
 {
     setResizeMode(QQuickView::SizeRootObjectToView);
     TimeZone::registerQLM();
+    DbgLink::registerQml();
+    BleWrapper::registerQml();
     rootContext()->setContextProperty("cpp", this); // uncomment this line to use c++ public slot function from QML
     setGeometry(50,50,680,800);
-    viewChanger(V_MAIN);
+    viewChanger(V_DBG);
     show();
 }
 
@@ -27,6 +30,7 @@ QmlApp::QmlApp(QWindow *parent) : QQuickView(parent)
  */
 bool QmlApp::event(QEvent *event)
 {
+    return QQuickView::event(event);
     if (event->type() == QEvent::Close)
     {
         if (m_pageId != V_MAIN)
