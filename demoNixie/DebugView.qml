@@ -20,8 +20,6 @@ Item {
         Component.onCompleted: cpp.handleQmlDbgInit(dbg);
     }
 
-
-
     RowLayout {
         id: rowLayout
         height: 80
@@ -68,7 +66,6 @@ Item {
 
     Rectangle {
         id: rectangle
-//        color:
         color: (ble.connected) ? "#FEEDED" : "#ffffff"
         anchors.fill: flickableText
     }

@@ -1,6 +1,6 @@
 QT += quick \
     qml \
-    bluetooth
+    bluetooth \
     core
 
 

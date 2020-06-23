@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.12.1, 2020-06-23T16:38:44. -->
+<!-- Written by QtCreator 4.12.1, 2020-06-16T21:01:05. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{378d4d8f-9f82-48a8-b2d8-2d1d9f27c2a3}</value>
+  <value type="QByteArray">{7d942d55-6508-4eb5-9087-27d2c545dbab}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -61,7 +61,7 @@
    <valuemap type="QVariantMap" key="ClangTools">
     <value type="bool" key="ClangTools.BuildBeforeAnalysis">true</value>
     <value type="QString" key="ClangTools.DiagnosticConfig">Builtin.DefaultTidyAndClazy</value>
-    <value type="int" key="ClangTools.ParallelJobs">4</value>
+    <value type="int" key="ClangTools.ParallelJobs">8</value>
     <valuelist type="QVariantList" key="ClangTools.SelectedDirs"/>
     <valuelist type="QVariantList" key="ClangTools.SelectedFiles"/>
     <valuelist type="QVariantList" key="ClangTools.SuppressedDiagnostics"/>
@@ -72,17 +72,17 @@
  <data>
   <variable>ProjectExplorer.Project.Target.0</variable>
   <valuemap type="QVariantMap">
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop Qt 5.15.0 GCC 64bit</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop Qt 5.15.0 GCC 64bit</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">qt.qt5.5150.gcc_64_kit</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Android for armeabi-v7a,arm64-v8a,x86,x86_64 (Clang Qt 5.15.0 for Android)</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Android for armeabi-v7a,arm64-v8a,x86,x86_64 (Clang Qt 5.15.0 for Android)</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{df182e91-33b0-4051-a29a-49cc5b70a282}</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
     <value type="bool">true</value>
     <value type="int" key="EnableQmlDebugging">0</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/build-demoNixie-Desktop_Qt_5_15_0_GCC_64bit-Debug</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/build-demoNixie-Desktop_Qt_5_15_0_GCC_64bit-Debug</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/antoine/DemoNixie/build-demoNixie-Desktop_Qt_5_15_0_GCC_64bit-Debug</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">/home/antoine/DemoNixie/build-demoNixie-Desktop_Qt_5_15_0_GCC_64bit-Debug</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -132,8 +132,8 @@
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
     <value type="bool">true</value>
     <value type="int" key="EnableQmlDebugging">2</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/build-demoNixie-Desktop_Qt_5_15_0_GCC_64bit-Release</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/build-demoNixie-Desktop_Qt_5_15_0_GCC_64bit-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/antoine/DemoNixie/build-demoNixie-Desktop_Qt_5_15_0_GCC_64bit-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">/home/antoine/DemoNixie/build-demoNixie-Desktop_Qt_5_15_0_GCC_64bit-Release</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -183,8 +183,8 @@
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
     <value type="bool">true</value>
     <value type="int" key="EnableQmlDebugging">0</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/build-demoNixie-Desktop_Qt_5_15_0_GCC_64bit-Profile</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/build-demoNixie-Desktop_Qt_5_15_0_GCC_64bit-Profile</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/antoine/DemoNixie/build-demoNixie-Desktop_Qt_5_15_0_GCC_64bit-Profile</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">/home/antoine/DemoNixie/build-demoNixie-Desktop_Qt_5_15_0_GCC_64bit-Profile</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -245,7 +245,15 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.DefaultDeployConfiguration</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.DeployConfigurationCount">1</value>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.PluginSettings"/>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.PluginSettings">
+    <valuelist type="QVariantList" key="AndroidDeviceAbis">
+     <value type="QString">arm64-v8a</value>
+     <value type="QString">armeabi-v7a</value>
+     <value type="QString">armeabi</value>
+    </valuelist>
+    <value type="QString" key="AndroidDeviceSerialNumber">60db3e61</value>
+    <value type="int" key="AndroidVersion.ApiLevel">27</value>
+   </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.0">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
     <valuelist type="QVariantList" key="Analyzer.Perf.Events">
@@ -306,8 +314,8 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/demoNixie/demoNixie.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/demoNixie/demoNixie.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/antoine/DemoNixie/demoNixie/demoNixie.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/antoine/DemoNixie/demoNixie/demoNixie.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -318,7 +326,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/build-demoNixie-Desktop_Qt_5_15_0_GCC_64bit-Debug</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/antoine/DemoNixie/build-demoNixie-Desktop_Qt_5_15_0_GCC_64bit-Release</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
@@ -328,15 +336,15 @@
   <valuemap type="QVariantMap">
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Android for armeabi-v7a,arm64-v8a,x86,x86_64 (Clang Qt 5.15.0 for Android)</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Android for armeabi-v7a,arm64-v8a,x86,x86_64 (Clang Qt 5.15.0 for Android)</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{df182e91-33b0-4051-a29a-49cc5b70a282}</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{4c943766-e0ab-4add-bb40-949085a92db7}</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
     <value type="bool">true</value>
     <value type="int" key="EnableQmlDebugging">0</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/build-demoNixie-Android_for_armeabi_v7a_arm64_v8a_x86_x86_64_Clang_Qt_5_15_0_for_Android-Debug</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/build-demoNixie-Android_for_armeabi_v7a_arm64_v8a_x86_x86_64_Clang_Qt_5_15_0_for_Android-Debug</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/antoine/DemoNixie/build-demoNixie-Android_for_armeabi_v7a_arm64_v8a_x86_x86_64_Clang_Qt_5_15_0_for_Android-Debug</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">/home/antoine/DemoNixie/build-demoNixie-Android_for_armeabi_v7a_arm64_v8a_x86_x86_64_Clang_Qt_5_15_0_for_Android-Debug</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -400,8 +408,8 @@
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
     <value type="bool">true</value>
     <value type="int" key="EnableQmlDebugging">2</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/build-demoNixie-Android_for_armeabi_v7a_arm64_v8a_x86_x86_64_Clang_Qt_5_15_0_for_Android-Release</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/build-demoNixie-Android_for_armeabi_v7a_arm64_v8a_x86_x86_64_Clang_Qt_5_15_0_for_Android-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/antoine/DemoNixie/build-demoNixie-Android_for_armeabi_v7a_arm64_v8a_x86_x86_64_Clang_Qt_5_15_0_for_Android-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">/home/antoine/DemoNixie/build-demoNixie-Android_for_armeabi_v7a_arm64_v8a_x86_x86_64_Clang_Qt_5_15_0_for_Android-Release</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -463,8 +471,8 @@
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
     <value type="bool">true</value>
     <value type="int" key="EnableQmlDebugging">0</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/build-demoNixie-Android_for_armeabi_v7a_arm64_v8a_x86_x86_64_Clang_Qt_5_15_0_for_Android-Profile</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/build-demoNixie-Android_for_armeabi_v7a_arm64_v8a_x86_x86_64_Clang_Qt_5_15_0_for_Android-Profile</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/antoine/DemoNixie/build-demoNixie-Android_for_armeabi_v7a_arm64_v8a_x86_x86_64_Clang_Qt_5_15_0_for_Android-Profile</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">/home/antoine/DemoNixie/build-demoNixie-Android_for_armeabi_v7a_arm64_v8a_x86_x86_64_Clang_Qt_5_15_0_for_Android-Profile</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -548,8 +556,8 @@
      <value type="QString">armeabi-v7a</value>
      <value type="QString">armeabi</value>
     </valuelist>
-    <value type="QString" key="AndroidDeviceSerialNumber">60db3e61</value>
-    <value type="int" key="AndroidVersion.ApiLevel">27</value>
+    <value type="QString" key="AndroidDeviceSerialNumber">LHS7N18C28003482</value>
+    <value type="int" key="AndroidVersion.ApiLevel">29</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.0">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
@@ -615,8 +623,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">0</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">demoNixie</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.AndroidRunConfiguration:/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/demoNixie/demoNixie.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/nino/Desktop/Programmation/DemoNixie_project/AppAndroid/DemoNixie/demoNixie/demoNixie.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.AndroidRunConfiguration:/home/antoine/DemoNixie/demoNixie/demoNixie.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/antoine/DemoNixie/demoNixie/demoNixie.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>

@@ -1,6 +1,8 @@
 import QtQuick 2.14
 import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
+import DbgLink 1.0
+import BleLink 1.0
 
 
 //Home page
@@ -19,6 +21,7 @@ Item {
     property bool changingColor: false
     property int indexBuffer : 0
     property int colorSelectorsSize: 45
+    property bool test: true
 
     function enableColorChanging(enabled){
         if(enabled){
@@ -33,6 +36,16 @@ Item {
             changingColor = false
             rp.itemAt(indexBuffer).borderColor = colorList[indexBuffer]
         }
+    }
+
+    BleLink {
+        id:ble
+        Component.onCompleted: cpp.handleQmlBleInit(ble);
+
+    }
+    DbgLink {
+        id:dbg
+        Component.onCompleted: cpp.handleQmlDbgInit(dbg);
     }
 
     MouseArea{
@@ -404,19 +417,30 @@ Item {
             id:btConnectButton
             anchors{left: parent.left; top: parent.top}
             size:50
-            _color: "#333333"
+            _color: (!btEnable) ? "#333333" : "#000066"
             iconSource: "images/bluetoothIconWhite.png"
             icon.color: "white"
             onClicked: {
                if(!btEnable){
                    btEnable = true
-                   _color = "#000066"
+                   _color = "#660000"
+                   ble.runDiscovery()
                }
                else{
                    btEnable = false
                    _color = "#333333"
+                   ble.stopDiscovery()
                 }
                 console.log("Color", _color)
+                dbg.showToast("test", 1)
+            }
+            states: State {
+                name: "BLEconnected"
+                when: ble.connected
+                PropertyChanges {
+                    target: btConnectButton
+                    _color: "#000066"
+                }
             }
         }
 
@@ -427,6 +451,10 @@ Item {
             _color: "#333333"
             iconSource: "images/senbByBluetoothWhite.png"
             icon.color: "white"
+            onClicked: {
+                ble.writeTime(clock.hours,clock.mins,clock.seconds)
+                ble.writeAnimation(false, clock.fontColorHours, 0, clock.fontColorMins, 0, clock.fontColorSeconds, 0)
+            }
         }
 
 

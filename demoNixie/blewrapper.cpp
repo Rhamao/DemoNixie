@@ -176,7 +176,7 @@ void BleWrapper::runDiscovery()
 {
     m_discoveryAgent->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
     emit discoveryChanged();
-    emit debugSended(QString("discovery Started"));
+    emit debugSended(QString("Discovery Started"));
 }
 
 void BleWrapper::stopDiscovery()

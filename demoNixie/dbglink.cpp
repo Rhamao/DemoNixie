@@ -42,3 +42,18 @@ void DbgLink::clear()
     m_text.clear();
     emit textChanged();
 }
+#if defined (Q_OS_ANDROID)
+void DbgLink::showToast(const QString &message, Duration duration) {
+    // all the magic must happen on Android UI thread
+
+    QtAndroid::runOnAndroidThread([message, duration] {
+        QAndroidJniObject javaString = QAndroidJniObject::fromString(message);
+        QAndroidJniObject toast = QAndroidJniObject::callStaticObjectMethod("android/widget/Toast", "makeText",
+                                                                            "(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;",
+                                                                            QtAndroid::androidActivity().object(),
+                                                                            javaString.object(),
+                                                                            jint(duration));
+        toast.callMethod<void>("show");
+    });
+}
+#endif

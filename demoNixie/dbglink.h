@@ -2,6 +2,9 @@
 #define DBGLINK_H
 
 #include <QObject>
+#if defined (Q_OS_ANDROID)
+#include <QtAndroidExtras>
+#endif
 
 class DbgLink : public QObject
 {
@@ -15,6 +18,10 @@ public:
 
     QString text() const { return m_text; }
     void setText(QString str);
+    enum Duration {
+        SHORT = 0,
+        LONG = 1
+    };
 
 
 public slots:
@@ -22,12 +29,16 @@ public slots:
     void appendLine(QString str);
     void appendColoredLine(QString str, QString color);
     void clear();
+    #if defined (Q_OS_ANDROID)
+    void showToast(const QString &message, Duration duration = LONG);
+    #endif
 
 signals:
     void textChanged();
 
 private:
     QString m_text;
+
 
 };
 
