@@ -46,6 +46,11 @@ Item {
     DbgLink {
         id:dbg
         Component.onCompleted: cpp.handleQmlDbgInit(dbg);
+        onNewText:  {
+            dbg.showToast(dbg.new_text, 1)
+        }
+
+
     }
 
     MouseArea{
@@ -432,7 +437,6 @@ Item {
                    ble.stopDiscovery()
                 }
                 console.log("Color", _color)
-                dbg.showToast("test", 1)
             }
             states: State {
                 name: "BLEconnected"

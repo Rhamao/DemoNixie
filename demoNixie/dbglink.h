@@ -10,6 +10,7 @@ class DbgLink : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
+    Q_PROPERTY(QString new_text READ new_text WRITE setNew_text NOTIFY newText)
 
 public:
     explicit DbgLink(QObject *parent = nullptr);
@@ -22,7 +23,8 @@ public:
         SHORT = 0,
         LONG = 1
     };
-
+    QString new_text() const;
+    void setNew_text(const QString &new_text);
 
 public slots:
     void append(QString str);
@@ -35,9 +37,11 @@ public slots:
 
 signals:
     void textChanged();
+    void newText();
 
 private:
     QString m_text;
+    QString m_new_text;
 
 
 };

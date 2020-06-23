@@ -15,6 +15,8 @@ void DbgLink::setText(QString str)
     if (!m_text.compare(str))
     {
         m_text = str;
+        m_new_text = str;
+        emit newText();
         emit textChanged();
     }
 }
@@ -22,18 +24,24 @@ void DbgLink::setText(QString str)
 void DbgLink::append(QString str)
 {
     m_text.append(str);
+    m_new_text = str;
+    emit newText();
     emit textChanged();
 }
 
 void DbgLink::appendLine(QString str)
 {
     m_text.append(str).append("<br>");
+    m_new_text = str;
+    emit newText();
     emit textChanged();
 }
 
 void DbgLink::appendColoredLine(QString str, QString color)
 {
     m_text.append("<font color=\"").append(color).append("\">").append(str).append("</font><br>");
+    m_new_text = str;
+    emit newText();
     emit textChanged();
 }
 
@@ -55,5 +63,15 @@ void DbgLink::showToast(const QString &message, Duration duration) {
                                                                             jint(duration));
         toast.callMethod<void>("show");
     });
+}
+
+QString DbgLink::new_text() const
+{
+    return m_new_text;
+}
+
+void DbgLink::setNew_text(const QString &new_text)
+{
+    m_new_text = new_text;
 }
 #endif
