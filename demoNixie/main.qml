@@ -1,6 +1,11 @@
 import QtQuick 2.14
 import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
+import DbgLink 1.0
+import BleLink 1.0
+import QtQuick.Dialogs 1.2
+import QtGraphicalEffects 1.12
+
 
 
 //Home page
@@ -19,6 +24,10 @@ Item {
     property bool changingColor: false
     property int indexBuffer : 0
     property int colorSelectorsSize: 45
+    property bool test: true
+    property int redBuffer: 0
+    property int greenBuffer: 0
+    property int blueBuffer: 0
 
     function enableColorChanging(enabled){
         if(enabled){
@@ -33,6 +42,21 @@ Item {
             changingColor = false
             rp.itemAt(indexBuffer).borderColor = colorList[indexBuffer]
         }
+    }
+
+    BleLink {
+        id:ble
+        Component.onCompleted: cpp.handleQmlBleInit(ble);
+
+    }
+    DbgLink {
+        id:dbg
+        Component.onCompleted: cpp.handleQmlDbgInit(dbg);
+        onNewText:  {
+            dbg.showToast(dbg.new_text, 1)
+        }
+
+
     }
 
     MouseArea{
@@ -404,20 +428,37 @@ Item {
             id:btConnectButton
             anchors{left: parent.left; top: parent.top}
             size:50
-            _color: "#333333"
+            _color: (!btEnable) ? "#333333" : "#000066"
             iconSource: "images/bluetoothIconWhite.png"
             icon.color: "white"
             onClicked: {
                if(!btEnable){
                    btEnable = true
-                   _color = "#000066"
+                   _color = "#660000"
+                   ble.runDiscovery()
                }
                else{
                    btEnable = false
                    _color = "#333333"
+                   ble.stopDiscovery()
                 }
                 console.log("Color", _color)
             }
+            states: State {
+                name: "BLEconnected"
+                when: ble.connected
+                PropertyChanges {
+                    target: btConnectButton
+                    _color: "#000066"
+                }
+            }
+            Behavior on rotation {
+                RotationAnimation{
+                    duration: 10000
+
+                }
+            }
+
         }
 
         DemoNixieButton{
@@ -427,6 +468,10 @@ Item {
             _color: "#333333"
             iconSource: "images/senbByBluetoothWhite.png"
             icon.color: "white"
+            onClicked: {
+                ble.writeTime(clock.hours,clock.mins,clock.seconds)
+                ble.writeAnimation(false, clock.fontColorHours, 0, clock.fontColorMins, 0, clock.fontColorSeconds, 0)
+            }
         }
 
 
@@ -530,6 +575,25 @@ Item {
                     utcListView.currentIndex--
                 console.log("UTCindex",  utcListView.currentIndex)
             }
+        }
+
+        Rectangle{
+            width: 200; height: width; radius: width;
+            anchors{top:btSendButton.bottom; topMargin: bigMargin; left:parent.left}
+            transform: Rotation { angle: 0}
+                gradient: Gradient {
+                    GradientStop {
+                       position: 0.000
+                       color: Qt.rgba(redBuffer, greenBuffer, blueBuffer, 1 )
+                    }
+                    GradientStop {
+                       position: 1.0
+                       color: "black"
+                    }
+                  }
+        }
+        Flickable {
+            ScrollBar.vertical: ScrollBar { }
         }
 
     }
