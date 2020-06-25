@@ -20,7 +20,7 @@ void QmlApp::handleQmlBleInit(BleWrapper* ble)
     connect(m_bleWrapper, SIGNAL(deviceFounded(const QBluetoothDeviceInfo&)), this, SLOT(getBleDevice(const QBluetoothDeviceInfo&)));
     connect(m_bleWrapper, SIGNAL(serviceFounded(const QBluetoothUuid&)), this, SLOT(getBleService(const QBluetoothUuid&)));
     connect(m_bleWrapper, SIGNAL(debugSended(QString)), m_dbgLink, SLOT(appendLine(QString)));
-    m_bleWrapper->setAutoCreate(true, "00:A0:50:00");
+    m_bleWrapper->setAutoCreate(true, "00:A0:50");
 }
 
 void QmlApp::testButton()
