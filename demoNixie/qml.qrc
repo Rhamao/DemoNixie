@@ -11,5 +11,9 @@
         <file>images/resetWhite.png</file>
         <file>DebugView.qml</file>
         <file>indicatorButton.png</file>
+        <file>DemoNixieSlider.qml</file>
+        <file>DemoNixieColorPicker.qml</file>
+        <file>images/cursor2.png</file>
+        <file>RgbSliders.qml</file>
     </qresource>
 </RCC>

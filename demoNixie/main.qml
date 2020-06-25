@@ -5,6 +5,8 @@ import DbgLink 1.0
 import BleLink 1.0
 import QtQuick.Dialogs 1.2
 import QtGraphicalEffects 1.12
+import QtQuick.Controls.Styles 1.4
+import QtQuick.Extras 1.4
 
 
 
@@ -24,21 +26,19 @@ Item {
     property bool changingColor: false
     property int indexBuffer : 0
     property int colorSelectorsSize: 45
-    property bool test: true
-    property int redBuffer: 0
-    property int greenBuffer: 0
-    property int blueBuffer: 0
 
     function enableColorChanging(enabled){
         if(enabled){
             hoursArea.visible = true
             minsArea.visible = true
             secondsArea.visible = true
+            colorCircleHighlighter.visible = true
             changingColor = true
         }else{
             hoursArea.visible = false
             minsArea.visible = false
             secondsArea.visible = false
+            colorCircleHighlighter.visible = false
             changingColor = false
             rp.itemAt(indexBuffer).borderColor = colorList[indexBuffer]
         }
@@ -64,6 +64,7 @@ Item {
         onClicked: {
             if(changingColor){
                 enableColorChanging(false)
+                console.log("click")
             }
         }
     }
@@ -113,6 +114,11 @@ Item {
                         id:ma
                         anchors.fill: parent
                         onClicked: {
+                            console.log("[IN]Inddex selected " + index)
+                            console.log("   Index color :            ", colorList[index])
+                            console.log("   Index buffer :           ", indexBuffer)
+                            console.log("   Index buffer color :     ", colorList[indexBuffer])
+                            console.log("   changing color of time : ", changingColor)
                             borderColor = Qt.darker(colorList[index])
                             if(!changingColor){
                                 indexBuffer = index
@@ -124,9 +130,11 @@ Item {
                                 rp.itemAt(indexBuffer).borderColor = colorList[indexBuffer]
                                 indexBuffer = index
                             }
-                        console.log("color : ", colorList[index])
-                        console.log("color buffer : ", indexBuffer)
-                        console.log("changing color : ", changingColor)
+                            console.log("[OUT]Index selected " + index)
+                            console.log("   Index color :            ", colorList[index])
+                            console.log("   Index buffer :           ", indexBuffer)
+                            console.log("   Index buffer color :     ", colorList[indexBuffer])
+                            console.log("   changing color of time : ", changingColor)
                         }
                         onReleased: {
                             _color = colorList[index]
@@ -254,6 +262,7 @@ Item {
                     btSendButton.visible = false
                     timeSetPlusButtons.visible = true
                     timeSetMinusButtons.visible = true
+                    colorPicker.visible = false
                     timeButtons.anchors.topMargin = timeButtons.anchors.topMargin + 110
                     fakeClock.fontColorHours = clock.fontColorHours
                     fakeClock.fontColorMins = clock.fontColorMins
@@ -278,6 +287,7 @@ Item {
                     utcSetMinusButton.visible = true
                     timeButtons.visible = false
                     btSendButton.visible = false
+                    colorPicker.visible = false
                     utcListView.currentIndex=clock.utc+12
                     utcListView.positionViewAtIndex(clock.utc+12, ListView.Center);
                 }
@@ -308,6 +318,7 @@ Item {
                     timeSetMinusButtons.visible = false
                     timeButtons.anchors.topMargin = timeButtons.anchors.topMargin - 110
                     clock.visible = true
+                    colorPicker.visible = true
                     fakeClock.visible = false
                     console.log("Clock visible ;", clock.visible)
                     console.log("FakeClock  visible;", fakeClock.visible)
@@ -370,6 +381,7 @@ Item {
                     timeButtons.anchors.topMargin = timeButtons.anchors.topMargin - 110
                     clock.visible = true
                     fakeClock.visible = false
+                    colorPicker.visible = true
                     console.log("Clock visible ;", clock.visible)
                     console.log("FakeClock  visible;", fakeClock.visible)
                 }
@@ -524,6 +536,7 @@ Item {
                     utcSetMinusButton.visible = false
                     timeButtons.visible = true
                     btSendButton.visible = true
+                    colorPicker.visible = true
                     setUtcButton._text = (clock.utc>=0)? "UTC\n+"+clock.utc+":00" : "UTC\n"+clock.utc+":00"
                 }
             }
@@ -555,6 +568,7 @@ Item {
                     utcSetMinusButton.visible = false
                     timeButtons.visible = true
                     btSendButton.visible = true
+                    colorPicker.visible = true
                 }
             }
 
@@ -577,24 +591,40 @@ Item {
             }
         }
 
-        Rectangle{
-            width: 200; height: width; radius: width;
-            anchors{top:btSendButton.bottom; topMargin: bigMargin; left:parent.left}
-            transform: Rotation { angle: 0}
-                gradient: Gradient {
-                    GradientStop {
-                       position: 0.000
-                       color: Qt.rgba(redBuffer, greenBuffer, blueBuffer, 1 )
+        Row{
+            id:colorPicker
+            anchors{top:btSendButton.bottom; topMargin: 50; left:parent.left; horizontalCenter: parent.horizontalCenter; leftMargin: smallMargin}
+            Rectangle{
+                id: colorCircle
+                border.width: 5
+                width: 190; height: width; radius: width;
+                color: Qt.rgba(rgbSliders.redCode/255, rgbSliders.greenCode/255, rgbSliders.blueCode/255, 1)
+                Rectangle{
+                    id:colorCircleHighlighter
+                    anchors.centerIn: colorCircle
+                    width:colorCircle.width+10
+                    height: width
+                    radius: width
+                    color: "white"
+                    opacity: 0.25
+                    visible: false
+                }
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        console.log("Color picker circle clicked")
+                        if(changingColor){
+                            console.log("   Color at index " + indexBuffer + " has been changed to " + colorCircle.color)
+                            colorList[indexBuffer] = Qt.rgba(rgbSliders.redCode/255, rgbSliders.greenCode/255, rgbSliders.blueCode/255, 1)
+                            rp.itemAt(indexBuffer)._color = colorList[indexBuffer]
+                            enableColorChanging(false)
+                        }
                     }
-                    GradientStop {
-                       position: 1.0
-                       color: "white"
-                    }
-                  }
-        }
-        Flickable {
-            // ...
-            ScrollBar.vertical: ScrollBar { }
+                }
+            }
+            RgbSliders{
+                id:rgbSliders
+            }
         }
 
     }
