@@ -64,7 +64,11 @@ void DbgLink::showToast(const QString &message, Duration duration) {
         toast.callMethod<void>("show");
     });
 }
-
+#else
+void DbgLink::showToast(const QString &message, Duration duration) {
+    //Ne marche que sous compilateur Android
+}
+#endif
 QString DbgLink::new_text() const
 {
     return m_new_text;
@@ -74,4 +78,4 @@ void DbgLink::setNew_text(const QString &new_text)
 {
     m_new_text = new_text;
 }
-#endif
+

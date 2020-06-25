@@ -593,7 +593,6 @@ Item {
                   }
         }
         Flickable {
-            // ...
             ScrollBar.vertical: ScrollBar { }
         }
 

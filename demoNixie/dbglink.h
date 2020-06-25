@@ -33,6 +33,8 @@ public slots:
     void clear();
     #if defined (Q_OS_ANDROID)
     void showToast(const QString &message, Duration duration = LONG);
+    #else
+    void showToast(const QString &message, Duration duration = LONG);
     #endif
 
 signals:
