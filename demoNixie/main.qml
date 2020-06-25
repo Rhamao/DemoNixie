@@ -588,7 +588,7 @@ Item {
                     }
                     GradientStop {
                        position: 1.0
-                       color: "black"
+                       color: "white"
                     }
                   }
         }
