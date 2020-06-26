@@ -1,2 +1,2 @@
 # DemoNixie
-Branche de la conception des trames BLE.
+Ancienne branche du design Android.
