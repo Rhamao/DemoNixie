@@ -1,2 +1,2 @@
 # DemoNixie
-Branche de la conception des trames BLE.
+Nouvelle branche du design Android après le merge avec AtBLE.
