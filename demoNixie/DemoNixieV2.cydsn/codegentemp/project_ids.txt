@@ -1,0 +1,12 @@
+F:\demoNixie\demoNixie\DemoNixieV2.cydsn\DemoNixieV2.cyprj|8e89ef92-fadc-4faf-809d-11821e30e66a
+F:\psoc\PSoC Creator\4.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|b7d957db-8ee7-4e4b-b1cf-6847700e0a52
+C:\Users\Hexalinkus\Documents\PSoC Creator\4.3\Downloads ( 4.3).cylib\Downloads ( 4.3).cyprj|f6df8cec-4eec-4ab7-ba7e-467b519a0180
+C:\Users\Hexalinkus\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|52d263e2-6821-4a2f-958e-024a4479ff0d
+F:\psoc\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|cd16dd46-6847-4dad-9ff8-b757c205bb63
+F:\psoc\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|605a10f8-f837-49a3-9f6a-cd6e4da41afc
+F:\psoc\PSoC Creator\4.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|944b7468-aeee-48c5-ba9a-1c6c7d214f49
+F:\psoc\PSoC Creator\4.3\PSoC Creator\dev\psoc6\PSoC6AnalogDevice\PSoC6AnalogDevice.cydsn\PSoC6AnalogDevice.cyprj|8bf2c285-ea7b-4a50-a78f-a21badeea819
+F:\psoc\PSoC Creator\4.3\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|4232264a-4721-429f-9569-64bb2668d9ed
+F:\demoNixie\demoNixie\UART_Low_Level_User_ISR01.cydsn\UART_Low_Level_User_ISR01.cyprj|9dc71b58-140a-461e-80bd-05100a19af4d
+F:\demoNixie\demoNixie\CE216795_DualCoreSharedMemory01.cydsn\CE216795_DualCoreSharedMemory01.cyprj|27d3babe-02db-44b2-a970-574043ec6d57
+F:\demoNixie\demoNixie\PSoC_EmEEPROM_PSoC601.cydsn\PSoC_EmEEPROM_PSoC601.cyprj|4109e3cd-a9ae-4da5-91d3-f946a9209599
