@@ -5,7 +5,7 @@ Branches à connaitre :
   </br>. master : branche par défaut
   </br>. documents_divers : tous les documents autre que du code (planning, docs composants, etc...)
   </br>. exemples_de_codes : tous les codes exemples pour aider à la programmation
-  </br>. design_android : design de l'app Android en QML
+  </br>. design_android2 : design de l'app Android en QML
   </br>. conception_electronique : Branche contenant les documents relatifs à la conception électronique du projet.
   </br>. QtBle : Branche de la conception des trames BLE.
   </br>
